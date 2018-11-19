@@ -6,7 +6,10 @@ public class Kite extends Quadrilateral{
     private int diag1;
     private int diag2;
     public Kite(){
-
+        side1 = 0;
+        side2 = 0;
+        diag1 = 0;
+        diag2 = 0;
     }
 
     public void setSide1(int side1) { this.side1 = side1; }
