@@ -2,8 +2,10 @@ package Quad;
 
 public class Parallelogram extends Rectangle{
     private int height;
+    private static int paraNum;
     public Parallelogram(){
         height = 0;
+        paraNum += 1;
     }
 
     public void setHeight(int height) {

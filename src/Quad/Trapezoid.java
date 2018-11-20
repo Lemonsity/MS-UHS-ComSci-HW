@@ -6,9 +6,9 @@ public class Trapezoid extends Quadrilateral {
     private int height;
     private int side1;
     private int side2;
-
+    private static int trapNum;
     public Trapezoid() {
-
+        trapNum += 1;
     }
 
     public void setTop(int top) { this.top = top; }
@@ -24,9 +24,7 @@ public class Trapezoid extends Quadrilateral {
     public int getSide2() { return side2; }
 
     @Override
-    public int findArea() {
-        return (top + bot) * height / 2;
-    }
+    public int findArea() { return (top + bot) * height / 2; }
     @Override
     public int findParameter(){
         return top + bot + side1 + side2;

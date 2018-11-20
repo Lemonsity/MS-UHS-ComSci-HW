@@ -2,8 +2,11 @@ package Quad;
 
 public class Rectangle extends Square{
     private int side2;
+    private static int rectNum;
     public Rectangle(){
+        super();
         side2 = 0;
+        rectNum += 1;
     }
 
     public void setSide2(int side2) {
