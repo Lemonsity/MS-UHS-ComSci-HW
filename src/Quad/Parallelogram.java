@@ -15,6 +15,7 @@ public class Parallelogram extends Rectangle{
     public int getHeight() {
         return height;
     }
+
     @Override
     public int findArea(){
         return height * getSide1();

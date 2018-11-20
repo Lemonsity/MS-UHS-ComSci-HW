@@ -6,7 +6,8 @@ public class Rectangle extends Square{
     public Rectangle(){
         super();
         side2 = 0;
-        rectNum += 1;
+        if (getClass() == Rectangle.class)
+            rectNum += 1;
     }
 
     public void setSide2(int side2) {
@@ -16,6 +17,9 @@ public class Rectangle extends Square{
     public int getSide2() {
         return side2;
     }
+
+    public int getRectNum() { return rectNum; }
+
     @Override
     public int findArea(){
         return side2 * getSide1();
