@@ -3,7 +3,7 @@ package Quad;
 public class Parallelogram extends Rectangle{
     private int height;
     public Parallelogram(){
-
+        height = 0;
     }
 
     public void setHeight(int height) {

@@ -3,7 +3,7 @@ package Quad;
 public class Rhombus extends Square{
     private int height;
     public Rhombus(){
-
+        height = 0;
     }
     public void setHeight(int height){
         this.height = height;

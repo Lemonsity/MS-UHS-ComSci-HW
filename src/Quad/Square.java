@@ -3,12 +3,10 @@ package Quad;
 public class Square extends Quadrilateral{
     private int side1;
     public Square(){
-
+        side1 = 0;
     }
 
-    public void setSide1(int side1) {
-        this.side1 = side1;
-    }
+    public void setSide1(int side1) { this.side1 = side1; }
 
     public int getSide1() {
         return side1;

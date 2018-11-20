@@ -3,7 +3,7 @@ package Quad;
 public class Rectangle extends Square{
     private int side2;
     public Rectangle(){
-
+        side2 = 0;
     }
 
     public void setSide2(int side2) {
