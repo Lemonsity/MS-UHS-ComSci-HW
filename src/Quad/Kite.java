@@ -7,11 +7,13 @@ public class Kite extends Quadrilateral{
     private int diag2;
     private static int kiteNum;
     public Kite(){
+        super();
         side1 = 0;
         side2 = 0;
         diag1 = 0;
         diag2 = 0;
-        kiteNum += 1;
+        if (getClass() == Kite.class)
+            kiteNum += 1;
     }
 
     public void setSide1(int side1) { this.side1 = side1; }
@@ -45,4 +47,5 @@ public class Kite extends Quadrilateral{
     public int findParameter() {
         return (side1 + side2) * 2;
     }
+
 }

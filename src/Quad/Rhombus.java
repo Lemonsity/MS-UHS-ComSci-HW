@@ -4,8 +4,10 @@ public class Rhombus extends Square{
     private int height;
     private static int rhomNum;
     public Rhombus(){
+        super();
         height = 0;
-        rhomNum += 1;
+        if (getClass() == Rhombus.class)
+            rhomNum += 1;
     }
     public void setHeight(int height){
         this.height = height;

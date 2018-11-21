@@ -8,7 +8,14 @@ public class Trapezoid extends Quadrilateral {
     private int side2;
     private static int trapNum;
     public Trapezoid() {
-        trapNum += 1;
+        super();
+        top = 0;
+        bot = 0;
+        height = 0;
+        side1 = 0;
+        side2 = 0;
+        if (getClass() == Trapezoid.class)
+            trapNum += 1;
     }
 
     public void setTop(int top) { this.top = top; }

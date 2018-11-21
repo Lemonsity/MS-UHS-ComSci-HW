@@ -4,6 +4,7 @@ public class Square extends Quadrilateral{
     private int side1;
     private static int squareNum;
     public Square(){
+        super();
         side1 = 0;
         if (getClass() == Square.class)
             squareNum += 1;

@@ -4,8 +4,10 @@ public class Parallelogram extends Rectangle{
     private int height;
     private static int paraNum;
     public Parallelogram(){
+        super();
         height = 0;
-        paraNum += 1;
+        if (getClass() == Parallelogram.class)
+            paraNum += 1;
     }
 
     public void setHeight(int height) {

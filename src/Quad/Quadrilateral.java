@@ -3,7 +3,7 @@ package Quad;
 public abstract class Quadrilateral {
     private static int quadNum;
     public Quadrilateral(){
-        quadNum = 0;
+        quadNum += 1;
     }
     abstract int findArea();
     abstract int findParameter();
