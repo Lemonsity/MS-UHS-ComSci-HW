@@ -20,7 +20,24 @@ public class Main {
                     switch (shape){
                         case 1:
                     }
+                case 2:
+                    if (storage.size() == 0){
+                        System.out.print("Nothing to remove\n");
+                        break;
+                    }
+                case 3:
+                    if (storage.size() == 0){
+                        System.out.print("Nothing to manipulate\n");
+                        break;
+                    }
+                case 4:
+                    if (storage.size() == 0){
+                        System.out.print("Nothing to extract\n");
+                        break;
+                    }
             }
+            choice1();
+            input = Integer.parseInt(br.readLine());
         }
         System.out.print("End of program\n");
     }
@@ -41,6 +58,6 @@ public class Main {
         System.out.print("4. Parallelogram\n");
         System.out.print("5. Kite\n");
         System.out.print("6. Trapezoid\n");
-        System.out.print("7. Defualt square\n");
+        System.out.print("7. Default square\n");
     }
 }
