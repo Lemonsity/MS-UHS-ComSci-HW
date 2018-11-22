@@ -19,6 +19,13 @@ public class Main {
                     int shape = Integer.parseInt(br.readLine());
                     switch (shape){
                         case 1:
+                            System.out.print("Please enter the side length of square");
+                            int side1 = Integer.parseInt(br.readLine());
+                            Square s = new Square();
+                            s.setSide1(side1);
+                            storage.add(s);
+                            break;
+                        case 2:
                     }
                 case 2:
                     if (storage.size() == 0){
@@ -48,7 +55,6 @@ public class Main {
         System.out.print("3. Manipulate one of the shape\n");
         System.out.print("4. Extract info from one shape\n");
         System.out.print("5. Exit the program\n");
-
     }
     public static void chooseShape(){
         System.out.print("Please choose the shape\n");
