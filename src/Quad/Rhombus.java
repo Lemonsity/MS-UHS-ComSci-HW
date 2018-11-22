@@ -38,5 +38,4 @@ public class Rhombus extends Square{
             return false;
         return true;
     }
-
 }
