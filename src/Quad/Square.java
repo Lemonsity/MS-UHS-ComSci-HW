@@ -26,4 +26,17 @@ public class Square extends Quadrilateral{
     public int findParameter() {
         return side1 * 4;
     }
+    @Override
+    public boolean equals(Object o){
+        if (this == o)
+            return true;
+        else if (o == null)
+            return false;
+        else if (this.getClass() != o.getClass())
+            return false;
+        Square object = (Square) o;
+        if (this.getSide1() != object.getSide1())
+            return false;
+        return true;
+    }
 }

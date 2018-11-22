@@ -28,4 +28,18 @@ public class Rectangle extends Square{
     public int findParameter(){
         return (side2 + getSide1()) * 2;
     }
+    @Override
+    public boolean equals(Object o){
+        if (this == o)
+            return true;
+        else if (o == null)
+            return false;
+        else if (this.getClass() != o.getClass())
+            return false;
+        Rectangle object = (Rectangle) o;
+        if (this.getSide1() != object.getSide1()
+                || this.getSide2() != object.getSide2())
+            return false;
+        return true;
+    }
 }

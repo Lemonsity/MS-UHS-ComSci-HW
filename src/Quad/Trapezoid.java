@@ -36,4 +36,21 @@ public class Trapezoid extends Quadrilateral {
     public int findParameter(){
         return top + bot + side1 + side2;
     }
+    @Override
+    public boolean equals(Object o){
+        if (this == o)
+            return true;
+        else if (o == null)
+            return false;
+        else if (this.getClass() != o.getClass())
+            return false;
+        Trapezoid object = (Trapezoid) o;
+        if (this.getSide1() != object.getSide1()
+                || this.getSide2() != object.getSide2()
+                || this.getTop() != object.getTop()
+                || this.getBot() != object.getBot()
+                || this.getHeight() != object.getHeight())
+            return false;
+        return true;
+    }
 }

@@ -26,4 +26,19 @@ public class Parallelogram extends Rectangle{
     public int findParameter(){
         return (getSide1() + getSide2()) * 2;
     }
+    @Override
+    public boolean equals(Object o){
+        if (this == o)
+            return true;
+        else if (o == null)
+            return false;
+        else if (this.getClass() != o.getClass())
+            return false;
+        Parallelogram object = (Parallelogram) o;
+        if (this.getSide1() != object.getSide1()
+                || this.getSide2() != object.getSide2()
+                || this.getHeight() != object.getHeight())
+            return false;
+        return true;
+    }
 }

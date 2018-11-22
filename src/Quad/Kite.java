@@ -47,5 +47,20 @@ public class Kite extends Quadrilateral{
     public int findParameter() {
         return (side1 + side2) * 2;
     }
-
+    @Override
+    public boolean equals(Object o){
+        if (this == o)
+            return true;
+        else if (o == null)
+            return false;
+        else if (this.getClass() != o.getClass())
+            return false;
+        Kite object = (Kite) o;
+        if (this.getSide1() != object.getSide1()
+                || this.getSide2() != object.getSide2()
+                || this.getDiag1() != object.getDiag1()
+                || this.getDiag2() != object.getDiag2())
+            return false;
+        return true;
+    }
 }
