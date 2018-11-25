@@ -11,21 +11,73 @@ public class Main {
         while (input != 5){
             switch (input){
                 case 1:
+                    int side1 = 0;
+                    int side2 = 0;
+                    int height = 0;
+                    int top = 0;
+                    int bot = 0;
+                    int diag1 = 0;
+                    int diag2 = 0;
                     if (storage.size() == 20){
                         System.out.print("Not enough storage\n");
                         break;
                     }
                     chooseShape();
                     int shape = Integer.parseInt(br.readLine());
+                    if (shape != 7)
+                        side1 = Integer.parseInt(br.readLine());
+                    if (shape == 2 || shape == 4 || shape == 5 || shape == 6)
+                        side2 = Integer.parseInt(br.readLine());
+                    if (shape == 3 || shape == 4 || shape == 6)
+                        height = Integer.parseInt(br.readLine());
+                    if (shape == 5){
+                        diag1 = Integer.parseInt(br.readLine());
+                        diag2 = Integer.parseInt(br.readLine());
+                    }
+                    if (shape == 6){
+                        top = Integer.parseInt(br.readLine());
+                        bot = Integer.parseInt(br.readLine());
+                    }
                     switch (shape){
                         case 1:
-                            System.out.print("Please enter the side length of square");
-                            int side1 = Integer.parseInt(br.readLine());
                             Square s = new Square();
                             s.setSide1(side1);
                             storage.add(s);
-                            break;
                         case 2:
+                            Rectangle r = new Rectangle();
+                            r.setSide1(side1);
+                            r.setSide2(side2);
+                            storage.add(r);
+                        case 3:
+                            Rhombus rh = new Rhombus();
+                            rh.setSide1(side1);
+                            rh.setHeight(height);
+                            storage.add(rh);
+                        case 4:
+                            Parallelogram p = new Parallelogram();
+                            p.setSide1(side1);
+                            p.setSide2(side2);
+                            p.setHeight(height);
+                            storage.add(p);
+                        case 5:
+                            Kite k = new Kite();
+                            k.setSide1(side1);
+                            k.setSide2(side2);
+                            k.setDiag1(diag1);
+                            k.setDiag2(diag2);
+                            storage.add(k);
+                        case 6:
+                            Trapezoid t = new Trapezoid();
+                            t.setSide1(side1);
+                            t.setSide2(side2);
+                            t.setBot(bot);
+                            t.setTop(top);
+                            t.setHeight(height);
+                            storage.add(t);
+                        case 7:
+                            Square sd = new Square();
+                            sd.setSide1(1);
+                            storage.add(sd);
                     }
                 case 2:
                     if (storage.size() == 0){
