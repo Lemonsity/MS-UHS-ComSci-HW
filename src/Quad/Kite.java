@@ -40,6 +40,10 @@ public class Kite extends Quadrilateral{
         return diag2;
     }
     @Override
+    public String toString(){
+        return "<Kite> Side 1:" + side1 + ", Side 2: " + side2 + ", Diagonal 1: " +  diag1 + ", Diagonal 2: " + diag2;
+    }
+    @Override
     public int findArea(){
         return diag1 * diag2 / 2;
     }

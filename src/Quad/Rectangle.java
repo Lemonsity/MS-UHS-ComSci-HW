@@ -19,7 +19,10 @@ public class Rectangle extends Square{
     }
 
     public int getRectNum() { return rectNum; }
-
+    @Override
+    public String toString() {
+        return "<Rectangle> Side 1: " + getSide1() + ", Side 2: " + getSide2();
+    }
     @Override
     public int findArea(){
         return side2 * getSide1();

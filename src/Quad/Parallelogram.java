@@ -19,6 +19,10 @@ public class Parallelogram extends Rectangle{
     }
 
     @Override
+    public String toString() {
+        return "<Parallelogram> Side 1: " + getSide1() + ", Side 2: " + getSide2() + ", Height: " + getHeight();
+    }
+    @Override
     public int findArea(){
         return height * getSide1();
     }

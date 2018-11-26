@@ -17,7 +17,10 @@ public class Square extends Quadrilateral{
     }
 
     public int getSquareNum() { return squareNum; }
-
+    @Override
+    public String toString() {
+        return "<Square> Side 1: " + getSide1();
+    }
     @Override
     public int findArea() {
         return side1 * side1;

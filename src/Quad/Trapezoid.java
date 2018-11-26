@@ -29,7 +29,10 @@ public class Trapezoid extends Quadrilateral {
     public int getHeight() { return height; }
     public int getSide1() { return side1; }
     public int getSide2() { return side2; }
-
+    @Override
+    public String toString() {
+        return "<Trapezoid> Slope 1: " + side1 + ", Slope 2: " + side2 + ", Top: " + top + ", Bottom: " + bot + ", Height: " + height;
+    }
     @Override
     public int findArea() { return (top + bot) * height / 2; }
     @Override
