@@ -18,6 +18,13 @@ public class Parallelogram extends Rectangle{
         return height;
     }
 
+    public int getParaNum() { return paraNum;}
+
+    public void remove() {
+        if (getClass() == Parallelogram.class)
+            paraNum -= 1;
+    }
+
     @Override
     public String toString() {
         return "<Parallelogram> Side 1: " + getSide1() + ", Side 2: " + getSide2() + ", Height: " + getHeight();

@@ -17,6 +17,11 @@ public class Square extends Quadrilateral{
     }
 
     public int getSquareNum() { return squareNum; }
+
+    public void remove() {
+        if (getClass() == Square.class)
+            squareNum -= 1;
+    }
     @Override
     public String toString() {
         return "<Square> Side 1: " + getSide1();

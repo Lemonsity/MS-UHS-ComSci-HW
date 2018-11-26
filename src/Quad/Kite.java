@@ -17,28 +17,30 @@ public class Kite extends Quadrilateral{
     }
 
     public void setSide1(int side1) { this.side1 = side1; }
-
     public void setSide2(int side2) { this.side2 = side2; }
-
     public void setDiag1(int diag1) { this.diag1 = diag1; }
-
     public void setDiag2(int diag2) { this.diag2 = diag2; }
 
     public int getSide1() {
         return side1;
     }
-
     public int getSide2() {
         return side2;
     }
-
     public int getDiag1() {
         return diag1;
     }
-
     public int getDiag2() {
         return diag2;
     }
+
+    public static int getKiteNum() { return kiteNum; }
+
+    public void remove() {
+        if (getClass() == Kite.class)
+            kiteNum -= 1;
+    }
+
     @Override
     public String toString(){
         return "<Kite> Side 1:" + side1 + ", Side 2: " + side2 + ", Diagonal 1: " +  diag1 + ", Diagonal 2: " + diag2;

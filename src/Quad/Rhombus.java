@@ -15,6 +15,13 @@ public class Rhombus extends Square{
 
     public int getHeight() { return height; }
 
+    public static int getRhomNum() { return rhomNum; }
+
+    public void remove() {
+        if (getClass() == Rhombus.class)
+            rhomNum -= 1;
+    }
+
     @Override
     public String toString() {
         return "<Rhombus> Side 1: " + getSide1() + ", Height: " + getHeight();

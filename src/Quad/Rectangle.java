@@ -19,6 +19,11 @@ public class Rectangle extends Square{
     }
 
     public int getRectNum() { return rectNum; }
+
+    public void remove() {
+        if (getClass() == Rectangle.class)
+            rectNum -= 1;
+    }
     @Override
     public String toString() {
         return "<Rectangle> Side 1: " + getSide1() + ", Side 2: " + getSide2();

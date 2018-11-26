@@ -29,6 +29,13 @@ public class Trapezoid extends Quadrilateral {
     public int getHeight() { return height; }
     public int getSide1() { return side1; }
     public int getSide2() { return side2; }
+
+    public int getTrapNum() { return trapNum;}
+
+    public void remove() {
+        if (getClass() == Trapezoid.class)
+            trapNum -= 1;
+    }
     @Override
     public String toString() {
         return "<Trapezoid> Slope 1: " + side1 + ", Slope 2: " + side2 + ", Top: " + top + ", Bottom: " + bot + ", Height: " + height;
