@@ -9,6 +9,14 @@ public class Parallelogram extends Rectangle{
         if (getClass() == Parallelogram.class)
             paraNum += 1;
     }
+    public Parallelogram(int side1, int side2, int height) {
+        super();
+        setSide1(side1);
+        setSide2(side2);
+        this.height = height;
+        if (getClass() == Parallelogram.class)
+            paraNum += 1;
+    }
 
     public void setHeight(int height) {
         this.height = height;

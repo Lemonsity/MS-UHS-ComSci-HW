@@ -17,6 +17,13 @@ public class Trapezoid extends Quadrilateral {
         if (getClass() == Trapezoid.class)
             trapNum += 1;
     }
+    public Trapezoid ( int top, int bot, int height, int side1, int side2) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.height = height;
+        this.top = top;
+        this.bot = bot;
+    }
 
     public void setTop(int top) { this.top = top; }
     public void setBot(int bot) { this.bot = bot; }
@@ -35,6 +42,7 @@ public class Trapezoid extends Quadrilateral {
     public void remove() {
         if (getClass() == Trapezoid.class)
             trapNum -= 1;
+
     }
     @Override
     public String toString() {

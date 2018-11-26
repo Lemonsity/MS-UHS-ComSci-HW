@@ -9,6 +9,13 @@ public class Rhombus extends Square{
         if (getClass() == Rhombus.class)
             rhomNum += 1;
     }
+    public Rhombus (int side1, int height) {
+        setSide1(side1);
+        this.height = height;
+        if (getClass() == Rhombus.class)
+            rhomNum += 1;
+    }
+
     public void setHeight(int height){
         this.height = height;
     }

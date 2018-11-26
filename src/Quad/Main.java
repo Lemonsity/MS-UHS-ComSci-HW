@@ -25,6 +25,7 @@ public class Main {
         input = Integer.parseInt(br.readLine());
         while (input != 5) {
             switch (input) {
+                //********************** Adding a shape **************************
                 case 1:
                     if (storage.size() == 20) {
                         System.out.print("Not enough storage\n");
@@ -49,52 +50,36 @@ public class Main {
                     }
                     switch (shape) {
                         case 1:
-                            Square s = new Square();
-                            s.setSide1(side1);
+                            Square s = new Square(side1);
                             storage.add(s);
                             break;
                         case 2:
-                            Rectangle r = new Rectangle();
-                            r.setSide1(side1);
-                            r.setSide2(side2);
+                            Rectangle r = new Rectangle(side1, side2);
                             storage.add(r);
                             break;
                         case 3:
-                            Rhombus rh = new Rhombus();
-                            rh.setSide1(side1);
-                            rh.setHeight(height);
+                            Rhombus rh = new Rhombus(side1, height);
                             storage.add(rh);
                             break;
                         case 4:
-                            Parallelogram p = new Parallelogram();
-                            p.setSide1(side1);
-                            p.setSide2(side2);
-                            p.setHeight(height);
+                            Parallelogram p = new Parallelogram(side1, side2, height);
                             storage.add(p);
                             break;
                         case 5:
-                            Kite k = new Kite();
-                            k.setSide1(side1);
-                            k.setSide2(side2);
-                            k.setDiag1(diag1);
-                            k.setDiag2(diag2);
+                            Kite k = new Kite(side1, side2, diag1, diag2);
                             storage.add(k);
                             break;
                         case 6:
-                            Trapezoid t = new Trapezoid();
-                            t.setSide1(side1);
-                            t.setSide2(side2);
-                            t.setBot(bot);
-                            t.setTop(top);
-                            t.setHeight(height);
+                            Trapezoid t = new Trapezoid(top, bot, height, side1, side2);
                             storage.add(t);
                             break;
                         case 7:
-                            Square sd = new Square();
-                            sd.setSide1(1);
+                            Square sd = new Square(1);
                             storage.add(sd);
                             break;
                     }
+                    break;
+                    //********************** Remove a shape **********************
                 case 2:
                     if (storage.size() == 0) {
                         System.out.print("Nothing to remove\n");
@@ -104,26 +89,31 @@ public class Main {
                     System.out.print("7. Specific shape with specific characteristic\n");
                     shape = Integer.parseInt(br.readLine());
                     if (shape != 7) {
-                        counter = 0;
+                        counter = -1;
                         indexExist = new int[20];
-                        for (int i = 0; i < 20; i++) {
+                        for (int i = 0; i < storage.size(); i++) {
                             if ((shape == 1 && storage.get(i) instanceof Square)
                                     || (shape == 2 && storage.get(i) instanceof Rectangle)
                                     || (shape == 3 && storage.get(i) instanceof Rhombus)
                                     || (shape == 4 && storage.get(i) instanceof Parallelogram)
                                     || (shape == 5 && storage.get(i) instanceof Kite)
                                     || (shape == 6 && storage.get(i) instanceof Trapezoid)) {
-                                System.out.printf("%d. %s\n", counter + 1, storage.get(i).toString());
-                                indexExist[counter] = i;
                                 counter++;
+                                System.out.printf("%d. %s\n", counter + 1, storage.get(i).toString() + "\n");
+                                indexExist[counter] = i;
                             }
                         }
-                        System.out.print("Enter the number of the object you want to delete\n");
-                        input = Integer.parseInt(br.readLine());
-                        storage.get(indexExist[input - 1]).remove();
-                        storage.remove(indexExist[input - 1]);
+                        if (counter >= 0) {
+                            System.out.print("Enter the number of the object you want to delete\n");
+                            input = Integer.parseInt(br.readLine());
+                            storage.get(indexExist[input - 1]).remove();
+                            storage.remove(indexExist[input - 1]);
+                        }
+                        else {
+                            System.out.print("No such shape is found\n");
+                        }
                     }
-                    else{
+                    else {
                         chooseShape();
                         shape = Integer.parseInt(br.readLine());
                         side1 = Integer.parseInt(br.readLine());
@@ -139,17 +129,89 @@ public class Main {
                             top = Integer.parseInt(br.readLine());
                             bot = Integer.parseInt(br.readLine());
                         }
+                        Quadrilateral q;
+                        switch (shape){
+                            case 1:
+                                q = new Square(side1);
+                                break;
+                            case 2:
+                                q = new Rectangle(side1, side2);
+                                break;
+                            case 3:
+                                q = new Rhombus(side1, height);
+                                break;
+                            case 4:
+                                q = new Parallelogram(side1, side2, height);
+                                break;
+                            case 5:
+                                q = new Kite(side1, side2, diag1, diag2);
+                                break;
+                            default:
+                                q = new Trapezoid(top, bot, height, side1, side2);
+                                break;
+                        }
+                        counter = -1;
+                        for (int i = 0; i < storage.size(); i++){
+                            if (storage.get(i).equals(q)){
+                                System.out.print(i + ". " + storage.get(i).toString() + "\n");
+                            }
+                        }
+                        if (counter >= 0) {
+                            System.out.print("Enter the index of the object you want to delete\n");
+                            input = Integer.parseInt(br.readLine());
+                            storage.get(input).remove();
+                            storage.remove(input);
+                            q.remove();
+                        }
+                        else {
+                            System.out.print("No such shape is found\n");
+                        }
                     }
+                    break;
+                    //********************** Manipulate **********************
                 case 3:
                     if (storage.size() == 0) {
                         System.out.print("Nothing to manipulate\n");
                         break;
                     }
+                    for (int i = 0; i < storage.size(); i++) {
+                        System.out.print(i + " " + storage.get(i).toString() + "\n");
+                    }
+                    System.out.print("Please enter the index of the shape you want to manipulate\n");
+                    input = Integer.parseInt(br.readLine());
+                    System.out.print(input + " " + storage.get(input).toString() + "\n");
+                    // Square
+                    if (storage.get(input).getClass() == Square.class) {
+
+                    }
+                    // Rectangle
+                    else if (storage.get(input).getClass() == Rectangle.class) {
+
+                    }
+                    // Rhombus
+                    else if (storage.get(input).getClass() == Rhombus.class) {
+
+                    }
+                    // Parallelogram
+                    else if (storage.get(input).getClass() == Parallelogram.class) {
+
+                    }
+                    // Kite
+                    else if (storage.get(input).getClass() == Kite.class) {
+
+                    }
+                    // Trapezoid
+                    else {
+
+                    }
+                    break;
+                    //********************** Extract **********************
                 case 4:
                     if (storage.size() == 0) {
                         System.out.print("Nothing to extract\n");
                         break;
                     }
+                    break;
             }
             choice1();
             input = Integer.parseInt(br.readLine());

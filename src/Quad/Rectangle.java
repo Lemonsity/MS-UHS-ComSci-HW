@@ -9,6 +9,13 @@ public class Rectangle extends Square{
         if (this.getClass() == Rectangle.class)
             rectNum += 1;
     }
+    public Rectangle (int side1, int side2) {
+        super();
+        setSide1(side1);
+        this.side2 = side2;
+        if (this.getClass() == Rectangle.class)
+            rectNum += 1;
+    }
 
     public void setSide2(int side2) {
         this.side2 = side2;

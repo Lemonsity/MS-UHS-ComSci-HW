@@ -9,6 +9,12 @@ public class Square extends Quadrilateral{
         if (getClass() == Square.class)
             squareNum += 1;
     }
+    public Square (int side1) {
+        super();
+        this.side1 = side1;
+        if (getClass() == Square.class)
+            squareNum += 1;
+    }
 
     public void setSide1(int side1) { this.side1 = side1; }
 

@@ -15,6 +15,14 @@ public class Kite extends Quadrilateral{
         if (getClass() == Kite.class)
             kiteNum += 1;
     }
+    public Kite(int side1, int side2, int diag1, int diag2){
+        this.side1 = side1;
+        this.side2 = side2;
+        this.diag1 = diag1;
+        this.diag2 = diag2;
+        if (getClass() == Kite.class)
+            kiteNum += 1;
+    }
 
     public void setSide1(int side1) { this.side1 = side1; }
     public void setSide2(int side2) { this.side2 = side2; }
