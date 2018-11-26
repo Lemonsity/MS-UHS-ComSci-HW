@@ -6,7 +6,7 @@ public class Rectangle extends Square{
     public Rectangle(){
         super();
         side2 = 0;
-        if (getClass() == Rectangle.class)
+        if (this.getClass() == Rectangle.class)
             rectNum += 1;
     }
 

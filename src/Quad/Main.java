@@ -1,10 +1,12 @@
 package Quad;
+
 import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
     public static ArrayList<Quadrilateral> storage = new ArrayList<>();
-    public static void main(String[] args) throws IOException{
+
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int shape;
         int input;
@@ -21,10 +23,10 @@ public class Main {
         //************************************************
         choice1();
         input = Integer.parseInt(br.readLine());
-        while (input != 5){
-            switch (input){
+        while (input != 5) {
+            switch (input) {
                 case 1:
-                    if (storage.size() == 20){
+                    if (storage.size() == 20) {
                         System.out.print("Not enough storage\n");
                         break;
                     }
@@ -37,15 +39,15 @@ public class Main {
                         side2 = Integer.parseInt(br.readLine());
                     if (shape == 3 || shape == 4 || shape == 6)
                         height = Integer.parseInt(br.readLine());
-                    if (shape == 5){
+                    if (shape == 5) {
                         diag1 = Integer.parseInt(br.readLine());
                         diag2 = Integer.parseInt(br.readLine());
                     }
-                    if (shape == 6){
+                    if (shape == 6) {
                         top = Integer.parseInt(br.readLine());
                         bot = Integer.parseInt(br.readLine());
                     }
-                    switch (shape){
+                    switch (shape) {
                         case 1:
                             Square s = new Square();
                             s.setSide1(side1);
@@ -94,37 +96,57 @@ public class Main {
                             break;
                     }
                 case 2:
-                    if (storage.size() == 0){
+                    if (storage.size() == 0) {
                         System.out.print("Nothing to remove\n");
                         break;
                     }
                     chooseShape();
                     System.out.print("7. Specific shape with specific characteristic\n");
                     shape = Integer.parseInt(br.readLine());
-                    switch (shape){
-                        case 1:
-                            counter = 0;
-                            indexExist = new int[20];
-                            for (int i = 0; i < 20; i++){
-                                if (storage.get(i) instanceof Square){
-                                    System.out.printf("%d. %s\n", counter + 1, storage.get(i).toString());
-                                    indexExist[counter] = i;
-                                    counter++;
-                                }
+                    if (shape != 7) {
+                        counter = 0;
+                        indexExist = new int[20];
+                        for (int i = 0; i < 20; i++) {
+                            if ((shape == 1 && storage.get(i) instanceof Square)
+                                    || (shape == 2 && storage.get(i) instanceof Rectangle)
+                                    || (shape == 3 && storage.get(i) instanceof Rhombus)
+                                    || (shape == 4 && storage.get(i) instanceof Parallelogram)
+                                    || (shape == 5 && storage.get(i) instanceof Kite)
+                                    || (shape == 6 && storage.get(i) instanceof Trapezoid)) {
+                                System.out.printf("%d. %s\n", counter + 1, storage.get(i).toString());
+                                indexExist[counter] = i;
+                                counter++;
                             }
-                            System.out.print("Enter the number of the object you want to delete\n");
-                            input = Integer.parseInt(br.readLine());
-                            storage.get(indexExist[input - 1]).remove();
-
-
+                        }
+                        System.out.print("Enter the number of the object you want to delete\n");
+                        input = Integer.parseInt(br.readLine());
+                        storage.get(indexExist[input - 1]).remove();
+                        storage.remove(indexExist[input - 1]);
+                    }
+                    else{
+                        chooseShape();
+                        shape = Integer.parseInt(br.readLine());
+                        side1 = Integer.parseInt(br.readLine());
+                        if (shape == 2 || shape == 4 || shape == 5 || shape == 6)
+                            side2 = Integer.parseInt(br.readLine());
+                        if (shape == 3 || shape == 4 || shape == 6)
+                            height = Integer.parseInt(br.readLine());
+                        if (shape == 5) {
+                            diag1 = Integer.parseInt(br.readLine());
+                            diag2 = Integer.parseInt(br.readLine());
+                        }
+                        if (shape == 6) {
+                            top = Integer.parseInt(br.readLine());
+                            bot = Integer.parseInt(br.readLine());
+                        }
                     }
                 case 3:
-                    if (storage.size() == 0){
+                    if (storage.size() == 0) {
                         System.out.print("Nothing to manipulate\n");
                         break;
                     }
                 case 4:
-                    if (storage.size() == 0){
+                    if (storage.size() == 0) {
                         System.out.print("Nothing to extract\n");
                         break;
                     }
@@ -134,7 +156,8 @@ public class Main {
         }
         System.out.print("End of program\n");
     }
-    public static void choice1(){
+
+    public static void choice1() {
         System.out.print("Please choose the action.\n");
         System.out.print("1. Add a shape\n");
         System.out.print("2. Remove a shape\n");
@@ -142,7 +165,8 @@ public class Main {
         System.out.print("4. Extract info from one shape\n");
         System.out.print("5. Exit the program\n");
     }
-    public static void chooseShape(){
+
+    public static void chooseShape() {
         System.out.print("Please choose the shape\n");
         System.out.print("1. Square\n");
         System.out.print("2. Rectangle\n");
