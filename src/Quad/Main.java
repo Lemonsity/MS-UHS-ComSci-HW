@@ -446,7 +446,7 @@ public class Main {
     }
 
     private static void choice1() {
-        System.out.print("************************************************************");
+        System.out.print("************************************************************\n");
         System.out.print("Please choose the action.\n");
         System.out.print("1. Add a shape\n");
         System.out.print("2. Remove a shape\n");
