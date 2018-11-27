@@ -14,6 +14,7 @@ public class Main {
         int input2; // After choosing the index of the shape, the second option: What characteristic they want to change / What characeristic they want to know
         int input3; // What the user want to characteristic to be changed into
         int counter;
+        int index_real;
         int[] indexExist;
         //*************** Characteristic *****************
         int side1 = 0;
@@ -92,8 +93,7 @@ public class Main {
                     System.out.print("7. Specific shape with specific characteristic\n");
                     shape = Integer.parseInt(br.readLine());
                     if (shape != 7) {
-                        counter = -1;
-                        indexExist = new int[20];
+                        counter = 0;
                         for (int i = 0; i < storage.size(); i++) {
                             if ((shape == 1 && storage.get(i).getClass() == Square.class)
                                     || (shape == 2 && storage.get(i).getClass() == Rectangle.class)
@@ -102,15 +102,15 @@ public class Main {
                                     || (shape == 5 && storage.get(i).getClass() ==  Kite.class)
                                     || (shape == 6 && storage.get(i).getClass() ==  Trapezoid.class)) {
                                 counter++;
-                                System.out.printf("%d. %s\n", counter + 1, storage.get(i).toString() + "\n");
-                                indexExist[counter] = i;
+                                System.out.printf("%d. %s\n", i + 1, storage.get(i).toString());
                             }
                         }
-                        if (counter >= 0) {
-                            System.out.print("Enter the number of the object you want to delete\n");
+                        if (counter > 0) {
+                            System.out.print("Enter the index of the object you want to delete\n");
                             input = Integer.parseInt(br.readLine());
-                            storage.get(indexExist[input - 1]).remove();
-                            storage.remove(indexExist[input - 1]);
+                            index_real = input - 1;
+                            storage.get(index_real).remove();
+                            storage.remove(index_real);
                         } else {
                             System.out.print("No such shape is found\n");
                         }
@@ -151,18 +151,19 @@ public class Main {
                                 q = new Trapezoid(top, bot, height, side1, side2);
                                 break;
                         }
-                        counter = -1;
+                        counter = 0;
                         for (int i = 0; i < storage.size(); i++) {
                             if (storage.get(i).equals(q)) {
                                 counter++;
-                                System.out.print((i + 1) + ". " + storage.get(i).toString() + "\n");
+                                System.out.printf("%d. %s\n", i + 1, storage.get(i).toString());
                             }
                         }
-                        if (counter >= 0) {
+                        if (counter > 0) {
                             System.out.print("Enter the number of the object you want to delete\n");
                             input = Integer.parseInt(br.readLine());
-                            storage.get(input - 1).remove();
-                            storage.remove(input - 1);
+                            index_real = input - 1;
+                            storage.get(index_real).remove();
+                            storage.remove(index_real);
                         } else {
                             System.out.print("No such shape is found\n");
                         }
@@ -176,7 +177,7 @@ public class Main {
                         break;
                     }
                     for (int i = 0; i < storage.size(); i++) {
-                        System.out.print(i + ". ");
+                        System.out.printf("%d. ", i + 1);
                         if (storage.get(i).getClass() == Square.class)
                             System.out.print("Square\n");
                         else if (storage.get(i).getClass() == Rectangle.class)
@@ -192,15 +193,16 @@ public class Main {
                     }
                     System.out.print("Please enter the index of the shape you want to manipulate\n");
                     input = Integer.parseInt(br.readLine());
-                    System.out.print(input + " " + storage.get(input).toString() + "\n");
+                    index_real = input - 1;
+                    System.out.print(index_real + " " + storage.get(index_real).toString() + "\n");
                     //********************** Square **********************
-                    if (storage.get(input).getClass() == Square.class) {
+                    if (storage.get(index_real).getClass() == Square.class) {
                         System.out.print("What is the new side length?\n");
                         input2 = Integer.parseInt(br.readLine());
-                        ((Square) storage.get(input)).setSide1(input2);
+                        ((Square) storage.get(index_real)).setSide1(input2);
                     }
                     //********************** Rectangle **********************
-                    else if (storage.get(input).getClass() == Rectangle.class) {
+                    else if (storage.get(index_real).getClass() == Rectangle.class) {
                         System.out.print("What aspect would you like to change?\n");
                         System.out.print("1. Side 1\n");
                         System.out.print("2. Side 2\n");
@@ -209,15 +211,15 @@ public class Main {
                         input3 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                ((Rectangle) storage.get(input)).setSide1(input3);
+                                ((Rectangle) storage.get(index_real)).setSide1(input3);
                                 break;
                             case 2:
-                                ((Rectangle) storage.get(input)).setSide2(input3);
+                                ((Rectangle) storage.get(index_real)).setSide2(input3);
                                 break;
                         }
                     }
                     //********************** Rhombus **********************
-                    else if (storage.get(input).getClass() == Rhombus.class) {
+                    else if (storage.get(index_real).getClass() == Rhombus.class) {
                         System.out.print("What aspect would you like to change?\n");
                         System.out.print("1. Side 1\n");
                         System.out.print("2. Height\n");
@@ -226,15 +228,15 @@ public class Main {
                         input3 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                ((Rhombus) storage.get(input)).setSide1(input3);
+                                ((Rhombus) storage.get(index_real)).setSide1(input3);
                                 break;
                             case 2:
-                                ((Rhombus) storage.get(input)).setHeight(input3);
+                                ((Rhombus) storage.get(index_real)).setHeight(input3);
                                 break;
                         }
                     }
                     //********************** Parallelogram **********************
-                    else if (storage.get(input).getClass() == Parallelogram.class) {
+                    else if (storage.get(index_real).getClass() == Parallelogram.class) {
                         System.out.print("What aspect would you like to change?\n");
                         System.out.print("1. Side 1\n");
                         System.out.print("2. Side 2\n");
@@ -244,18 +246,18 @@ public class Main {
                         input3 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                ((Parallelogram) storage.get(input)).setSide1(input3);
+                                ((Parallelogram) storage.get(index_real)).setSide1(input3);
                                 break;
                             case 2:
-                                ((Parallelogram) storage.get(input)).setSide2(input3);
+                                ((Parallelogram) storage.get(index_real)).setSide2(input3);
                                 break;
                             case 3:
-                                ((Parallelogram) storage.get(input)).setHeight(input3);
+                                ((Parallelogram) storage.get(index_real)).setHeight(input3);
                                 break;
                         }
                     }
                     //********************** Kite **********************
-                    else if (storage.get(input).getClass() == Kite.class) {
+                    else if (storage.get(index_real).getClass() == Kite.class) {
                         System.out.print("What aspect would you like to change?\n");
                         System.out.print("1. Side 1\n");
                         System.out.print("2. Side 2\n");
@@ -266,16 +268,16 @@ public class Main {
                         input3 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                ((Kite) storage.get(input)).setSide1(input3);
+                                ((Kite) storage.get(index_real)).setSide1(input3);
                                 break;
                             case 2:
-                                ((Kite) storage.get(input)).setSide2(input3);
+                                ((Kite) storage.get(index_real)).setSide2(input3);
                                 break;
                             case 3:
-                                ((Kite) storage.get(input)).setDiag1(input3);
+                                ((Kite) storage.get(index_real)).setDiag1(input3);
                                 break;
                             case 4:
-                                ((Kite) storage.get(input)).setDiag2(input3);
+                                ((Kite) storage.get(index_real)).setDiag2(input3);
                                 break;
                         }
                     }
@@ -292,19 +294,19 @@ public class Main {
                         input3 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                ((Trapezoid) storage.get(input)).setSide1(input3);
+                                ((Trapezoid) storage.get(index_real)).setSide1(input3);
                                 break;
                             case 2:
-                                ((Trapezoid) storage.get(input)).setSide2(input3);
+                                ((Trapezoid) storage.get(index_real)).setSide2(input3);
                                 break;
                             case 3:
-                                ((Trapezoid) storage.get(input)).setTop(input3);
+                                ((Trapezoid) storage.get(index_real)).setTop(input3);
                                 break;
                             case 4:
-                                ((Trapezoid) storage.get(input)).setBot(input3);
+                                ((Trapezoid) storage.get(index_real)).setBot(input3);
                                 break;
                             case 5:
-                                ((Trapezoid) storage.get(input)).setHeight(input3);
+                                ((Trapezoid) storage.get(index_real)).setHeight(input3);
                                 break;
                         }
                     }
@@ -316,7 +318,7 @@ public class Main {
                         break;
                     }
                     for (int i = 0; i < storage.size(); i++) {
-                        System.out.print(i + ". ");
+                        System.out.printf("%d. ", i + 1);
                         if (storage.get(i).getClass() == Square.class)
                             System.out.print("Square\n");
                         else if (storage.get(i).getClass() == Rectangle.class)
@@ -332,122 +334,119 @@ public class Main {
                     }
                     System.out.print("Enter the index of the shape you want to extract:\n");
                     input = Integer.parseInt(br.readLine()); // The index of the shape the user want to access
+                    index_real = input - 1;
                     System.out.print("What would you like to know about this shape?\n");
                     System.out.print("1. Amount of total Quadrilateral\n");
                     System.out.print("2. Amount of such shape selected\n");
                     System.out.print("3. Area of the shape\n");
                     System.out.print("4. Parameter of the shape\n");
                     //********************** Square **********************
-                    if (storage.get(input).getClass() == Square.class) {
-                        System.out.print("3. Side 1\n");
+                    if (storage.get(index_real).getClass() == Square.class) {
+                        System.out.print("5. Side 1\n");
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                System.out.printf("There are %d quadrilateral in total\n", storage.get(input).getQuadNum());
+                                System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(input).getNum());
+                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
                                 break;
                             case 3:
-                                System.out.printf("The area is %d\n", storage.get(input).findArea());
+                                System.out.printf("The area is %d\n", storage.get(index_real).findArea());
                                 break;
                             case 4:
-                                System.out.printf("The parameter is %d\n", storage.get(input).findParameter());
+                                System.out.printf("The parameter is %d\n", storage.get(index_real).findParameter());
                                 break;
                             case 5:
-                                System.out.printf("Side 1: %d\n", ((Square)storage.get(input)).getSide1());
+                                System.out.printf("Side 1: %d\n", ((Square)storage.get(index_real)).getSide1());
                                 break;
                         }
                     }
                     //********************** Rectangle **********************
-                    else if (storage.get(input).getClass() == Rectangle.class) {
-                        System.out.print("What aspect would you like to change?\n");
+                    else if (storage.get(index_real).getClass() == Rectangle.class) {
                         System.out.print("5. Side 1\n");
                         System.out.print("6. Side 2\n");
                         input2 = Integer.parseInt(br.readLine());
-
                         switch (input2) {
                             case 1:
-                                System.out.printf("There are %d quadrilateral in total\n", storage.get(input).getQuadNum());
+                                System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(input).getNum());
+                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
                                 break;
                             case 3:
-                                System.out.printf("The area is %d\n", storage.get(input).findArea());
+                                System.out.printf("The area is %d\n", storage.get(index_real).findArea());
                                 break;
                             case 4:
-                                System.out.printf("The parameter is %d\n", storage.get(input).findParameter());
+                                System.out.printf("The parameter is %d\n", storage.get(index_real).findParameter());
                                 break;
                             case 5:
-                                System.out.printf("Side 1: %d\n", ((Rectangle)storage.get(input)).getSide1());
+                                System.out.printf("Side 1: %d\n", ((Rectangle)storage.get(index_real)).getSide1());
                                 break;
                             case 6:
-                                System.out.printf("Side 2: %d\n", ((Rectangle)storage.get(input)).getSide2());
+                                System.out.printf("Side 2: %d\n", ((Rectangle)storage.get(index_real)).getSide2());
                                 break;
                         }
                     }
                     //********************** Rhombus **********************
-                    else if (storage.get(input).getClass() == Rhombus.class) {
+                    else if (storage.get(index_real).getClass() == Rhombus.class) {
                         System.out.print("5. Side 1\n");
                         System.out.print("6. Height\n");
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                System.out.printf("There are %d quadrilateral in total\n", storage.get(input).getQuadNum());
+                                System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(input).getNum());
+                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
                                 break;
                             case 3:
-                                System.out.printf("The area is %d\n", storage.get(input).findArea());
+                                System.out.printf("The area is %d\n", storage.get(index_real).findArea());
                                 break;
                             case 4:
-                                System.out.printf("The parameter is %d\n", storage.get(input).findParameter());
+                                System.out.printf("The parameter is %d\n", storage.get(index_real).findParameter());
                                 break;
                             case 5:
-                                System.out.printf("Side 1: %d\n", ((Rhombus)storage.get(input)).getSide1());
+                                System.out.printf("Side 1: %d\n", ((Rhombus)storage.get(index_real)).getSide1());
                                 break;
                             case 6:
-                                System.out.printf("Height: %d\n", ((Rhombus)storage.get(input)).getHeight());
+                                System.out.printf("Height: %d\n", ((Rhombus)storage.get(index_real)).getHeight());
                                 break;
                         }
 
                     }
                     //********************** Parallelogram **********************
-                    else if (storage.get(input).getClass() == Parallelogram.class) {
-                        System.out.print("What aspect would you like to change?\n");
+                    else if (storage.get(index_real).getClass() == Parallelogram.class) {
                         System.out.print("5. Side 1\n");
                         System.out.print("6. Side 2\n");
                         System.out.print("7. Height\n");
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                System.out.printf("There are %d quadrilateral in total\n", storage.get(input).getQuadNum());
+                                System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(input).getNum());
+                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
                                 break;
                             case 3:
-                                System.out.printf("The area is %d\n", storage.get(input).findArea());
+                                System.out.printf("The area is %d\n", storage.get(index_real).findArea());
                                 break;
                             case 4:
-                                System.out.printf("The parameter is %d\n", storage.get(input).findParameter());
+                                System.out.printf("The parameter is %d\n", storage.get(index_real).findParameter());
                                 break;
                             case 5:
-                                System.out.printf("Side 1: %d\n", ((Parallelogram)storage.get(input)).getSide1());
+                                System.out.printf("Side 1: %d\n", ((Parallelogram)storage.get(index_real)).getSide1());
                                 break;
                             case 6:
-                                System.out.printf("Side 2: %d\n", ((Parallelogram)storage.get(input)).getSide2());
+                                System.out.printf("Side 2: %d\n", ((Parallelogram)storage.get(index_real)).getSide2());
                                 break;
                             case 7:
-                                System.out.printf("Height: %d\n", ((Parallelogram)storage.get(input)).getHeight());
+                                System.out.printf("Height: %d\n", ((Parallelogram)storage.get(index_real)).getHeight());
                                 break;
                         }
                     }
                     //********************** Kite **********************
-                    else if (storage.get(input).getClass() == Kite.class) {
-                        System.out.print("What aspect would you like to change?\n");
+                    else if (storage.get(index_real).getClass() == Kite.class) {
                         System.out.print("5. Side 1\n");
                         System.out.print("6. Side 2\n");
                         System.out.print("7. Diagonal 1\n");
@@ -455,34 +454,33 @@ public class Main {
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                System.out.printf("There are %d quadrilateral in total\n", storage.get(input).getQuadNum());
+                                System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(input).getNum());
+                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
                                 break;
                             case 3:
-                                System.out.printf("The area is %d\n", storage.get(input).findArea());
+                                System.out.printf("The area is %d\n", storage.get(index_real).findArea());
                                 break;
                             case 4:
-                                System.out.printf("The parameter is %d\n", storage.get(input).findParameter());
+                                System.out.printf("The parameter is %d\n", storage.get(index_real).findParameter());
                                 break;
                             case 5:
-                                System.out.printf("Side 1: %d\n", ((Kite)storage.get(input)).getSide1());
+                                System.out.printf("Side 1: %d\n", ((Kite)storage.get(index_real)).getSide1());
                                 break;
                             case 6:
-                                System.out.printf("Side 2: %d\n", ((Kite)storage.get(input)).getSide2());
+                                System.out.printf("Side 2: %d\n", ((Kite)storage.get(index_real)).getSide2());
                                 break;
                             case 7:
-                                System.out.printf("Diagonal 1: %d\n", ((Kite)storage.get(input)).getDiag1());
+                                System.out.printf("Diagonal 1: %d\n", ((Kite)storage.get(index_real)).getDiag1());
                                 break;
                             case 8:
-                                System.out.printf("Diagonal 2: %d\n", ((Kite)storage.get(input)).getDiag2());
+                                System.out.printf("Diagonal 2: %d\n", ((Kite)storage.get(index_real)).getDiag2());
                                 break;
                         }
                     }
                     //********************** Trapezoid **********************
                     else {
-                        System.out.print("What aspect would you like to change?\n");
                         System.out.print("5. Side 1\n");
                         System.out.print("6. Side 2\n");
                         System.out.print("7. Top\n");
@@ -491,31 +489,31 @@ public class Main {
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
-                                System.out.printf("There are %d quadrilateral in total\n", storage.get(input).getQuadNum());
+                                System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(input).getNum());
+                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
                                 break;
                             case 3:
-                                System.out.printf("The area is %d\n", storage.get(input).findArea());
+                                System.out.printf("The area is %d\n", storage.get(index_real).findArea());
                                 break;
                             case 4:
-                                System.out.printf("The parameter is %d\n", storage.get(input).findParameter());
+                                System.out.printf("The parameter is %d\n", storage.get(index_real).findParameter());
                                 break;
                             case 5:
-                                System.out.printf("Side 1: %d\n", ((Trapezoid)storage.get(input)).getSide1());
+                                System.out.printf("Side 1: %d\n", ((Trapezoid)storage.get(index_real)).getSide1());
                                 break;
                             case 6:
-                                System.out.printf("Side 2: %d\n", ((Trapezoid)storage.get(input)).getSide2());
+                                System.out.printf("Side 2: %d\n", ((Trapezoid)storage.get(index_real)).getSide2());
                                 break;
                             case 7:
-                                System.out.printf("Top: %d\n", ((Trapezoid)storage.get(input)).getTop());
+                                System.out.printf("Top: %d\n", ((Trapezoid)storage.get(index_real)).getTop());
                                 break;
                             case 8:
-                                System.out.printf("Bottom: %d\n", ((Trapezoid)storage.get(input)).getBot());
+                                System.out.printf("Bottom: %d\n", ((Trapezoid)storage.get(index_real)).getBot());
                                 break;
                             case 9:
-                                System.out.printf("Height: %d\n", ((Trapezoid)storage.get(input)).getHeight());
+                                System.out.printf("Height: %d\n", ((Trapezoid)storage.get(index_real)).getHeight());
                                 break;
                         }
                     }
