@@ -30,7 +30,7 @@ public class Rectangle extends Square{
     public void remove() {
         if (getClass() == Rectangle.class) {
             rectNum -= 1;
-            subtractAmount();
+            super.subtractAmount();
         }
     }
     @Override

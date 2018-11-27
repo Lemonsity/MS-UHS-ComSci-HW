@@ -31,7 +31,7 @@ public class Parallelogram extends Rectangle{
     public void remove() {
         if (getClass() == Parallelogram.class) {
             paraNum -= 1;
-            subtractAmount();
+            super.subtractAmount();
         }
     }
 

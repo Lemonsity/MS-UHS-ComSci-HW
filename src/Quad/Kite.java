@@ -47,7 +47,7 @@ public class Kite extends Quadrilateral{
     public void remove() {
         if (getClass() == Kite.class) {
             kiteNum -= 1;
-            subtractAmount();
+            super.subtractAmount();
         }
     }
 

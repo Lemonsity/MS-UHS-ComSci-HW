@@ -5,10 +5,11 @@ public abstract class Quadrilateral {
     public Quadrilateral(){
         quadNum += 1;
     }
-    abstract int findArea();
-    abstract int findParameter();
+
     public int getQuadNum() { return quadNum; }
-    protected void subtractAmount() { quadNum -= 1;}
+    public void subtractAmount() { quadNum -= 1;}
     abstract void remove();
     abstract int getNum();
+    abstract int findArea();
+    abstract int findParameter();
 }

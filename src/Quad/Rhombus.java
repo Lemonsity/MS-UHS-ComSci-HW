@@ -27,7 +27,7 @@ public class Rhombus extends Square{
     public void remove() {
         if (getClass() == Rhombus.class) {
             rhomNum -= 1;
-            subtractAmount();
+            super.subtractAmount();
         }
     }
 

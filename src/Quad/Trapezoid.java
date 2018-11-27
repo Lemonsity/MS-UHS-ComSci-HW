@@ -42,7 +42,7 @@ public class Trapezoid extends Quadrilateral {
     public void remove() {
         if (getClass() == Trapezoid.class) {
             trapNum -= 1;
-            subtractAmount();
+            super.subtractAmount();
         }
 
     }

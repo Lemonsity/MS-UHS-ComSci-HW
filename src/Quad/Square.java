@@ -27,7 +27,7 @@ public class Square extends Quadrilateral{
     public void remove() {
         if (getClass() == Square.class) {
             squareNum -= 1;
-            subtractAmount();
+            super.subtractAmount();
         }
     }
     @Override
