@@ -23,6 +23,8 @@ public class Trapezoid extends Quadrilateral {
         this.height = height;
         this.top = top;
         this.bot = bot;
+        if (getClass() == Trapezoid.class)
+            trapNum += 1;
     }
 
     public void setTop(int top) { this.top = top; }

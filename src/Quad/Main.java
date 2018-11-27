@@ -524,7 +524,6 @@ public class Main {
         }
         System.out.print("End of program\n");
     }
-
     private static void choice1() {
         System.out.print("************************************************************\n");
         System.out.print("Please choose the action.\n");
@@ -534,7 +533,6 @@ public class Main {
         System.out.print("4. Extract info from one shape\n");
         System.out.print("5. Exit the program\n");
     }
-
     private static void chooseShape() {
         System.out.print("Please choose the shape\n");
         System.out.print("1. Square\n");
