@@ -289,6 +289,12 @@ public class Main {
                         System.out.print("Nothing to extract\n");
                         break;
                     }
+                    for (int i = 0; i < storage.size(); i++){
+                        System.out.print(i + ". " + storage.get(i).toString() + "\n");
+                    }
+                    System.out.print("Enter the index of the shape you want to extract:\n");
+                    input = Integer.parseInt(br.readLine());
+
                     break;
             }
             choice1();
