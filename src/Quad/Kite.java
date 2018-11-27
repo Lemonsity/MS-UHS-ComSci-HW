@@ -42,11 +42,13 @@ public class Kite extends Quadrilateral{
         return diag2;
     }
 
-    public static int getKiteNum() { return kiteNum; }
+    public int getNum() { return kiteNum; }
 
     public void remove() {
-        if (getClass() == Kite.class)
+        if (getClass() == Kite.class) {
             kiteNum -= 1;
+            subtractAmount();
+        }
     }
 
     @Override

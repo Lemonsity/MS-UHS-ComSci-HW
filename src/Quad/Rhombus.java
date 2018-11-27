@@ -22,11 +22,13 @@ public class Rhombus extends Square{
 
     public int getHeight() { return height; }
 
-    public static int getRhomNum() { return rhomNum; }
+    public int getNum() { return rhomNum; }
 
     public void remove() {
-        if (getClass() == Rhombus.class)
+        if (getClass() == Rhombus.class) {
             rhomNum -= 1;
+            subtractAmount();
+        }
     }
 
     @Override

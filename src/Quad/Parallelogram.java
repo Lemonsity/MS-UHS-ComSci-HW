@@ -26,11 +26,13 @@ public class Parallelogram extends Rectangle{
         return height;
     }
 
-    public int getParaNum() { return paraNum;}
+    public int getNum() { return paraNum;}
 
     public void remove() {
-        if (getClass() == Parallelogram.class)
+        if (getClass() == Parallelogram.class) {
             paraNum -= 1;
+            subtractAmount();
+        }
     }
 
     @Override

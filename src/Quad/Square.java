@@ -22,11 +22,13 @@ public class Square extends Quadrilateral{
         return side1;
     }
 
-    public int getSquareNum() { return squareNum; }
+    public int getNum() { return squareNum; }
 
     public void remove() {
-        if (getClass() == Square.class)
+        if (getClass() == Square.class) {
             squareNum -= 1;
+            subtractAmount();
+        }
     }
     @Override
     public String toString() {

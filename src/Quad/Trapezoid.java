@@ -37,11 +37,13 @@ public class Trapezoid extends Quadrilateral {
     public int getSide1() { return side1; }
     public int getSide2() { return side2; }
 
-    public int getTrapNum() { return trapNum;}
+    public int getNum() { return trapNum;}
 
     public void remove() {
-        if (getClass() == Trapezoid.class)
+        if (getClass() == Trapezoid.class) {
             trapNum -= 1;
+            subtractAmount();
+        }
 
     }
     @Override

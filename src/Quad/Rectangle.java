@@ -25,11 +25,13 @@ public class Rectangle extends Square{
         return side2;
     }
 
-    public int getRectNum() { return rectNum; }
+    public int getNum() { return rectNum; }
 
     public void remove() {
-        if (getClass() == Rectangle.class)
+        if (getClass() == Rectangle.class) {
             rectNum -= 1;
+            subtractAmount();
+        }
     }
     @Override
     public String toString() {

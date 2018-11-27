@@ -8,5 +8,7 @@ public abstract class Quadrilateral {
     abstract int findArea();
     abstract int findParameter();
     public int getQuadNum() { return quadNum; }
+    protected void subtractAmount() { quadNum -= 1;}
     abstract void remove();
+    abstract int getNum();
 }
