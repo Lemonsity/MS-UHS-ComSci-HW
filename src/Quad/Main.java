@@ -38,18 +38,28 @@ public class Main {
                     chooseShape();
                     System.out.print("7. Default square\n");
                     shape = Integer.parseInt(br.readLine());
-                    if (shape != 7)
+                    if (shape != 7) {
+                        System.out.print("Please enter the length of side 1 (The length of the left slope if it's trapezoid):\n");
                         side1 = Integer.parseInt(br.readLine());
-                    if (shape == 2 || shape == 4 || shape == 5 || shape == 6)
+                    }
+                    if (shape == 2 || shape == 4 || shape == 5 || shape == 6) {
+                        System.out.print("Please enter the length of side 1 (The length of the right slope if it's trapezoid):\n");
                         side2 = Integer.parseInt(br.readLine());
-                    if (shape == 3 || shape == 4 || shape == 6)
+                    }
+                    if (shape == 3 || shape == 4 || shape == 6) {
+                        System.out.print("Please enter the height:\n");
                         height = Integer.parseInt(br.readLine());
+                    }
                     if (shape == 5) {
+                        System.out.print("Please enter length of diagonal 1:\n");
                         diag1 = Integer.parseInt(br.readLine());
+                        System.out.print("Please enter length of diagonal 2:\n");
                         diag2 = Integer.parseInt(br.readLine());
                     }
                     if (shape == 6) {
+                        System.out.print("Please enter length of top:\n");
                         top = Integer.parseInt(br.readLine());
+                        System.out.print("Please enter length of bottom:\n");
                         bot = Integer.parseInt(br.readLine());
                     }
                     switch (shape) {
@@ -117,17 +127,26 @@ public class Main {
                     } else { // user choose to check of these is a specific shape in the database
                         chooseShape();
                         shape = Integer.parseInt(br.readLine());
+                        System.out.print("Please enter the length of side 1 (The length of the left slope if it's trapezoid):\n");
                         side1 = Integer.parseInt(br.readLine());
-                        if (shape == 2 || shape == 4 || shape == 5 || shape == 6)
+                        if (shape == 2 || shape == 4 || shape == 5 || shape == 6) {
+                            System.out.print("Please enter the length of side 2 (The length of the left slope if it's trapezoid):\n");
                             side2 = Integer.parseInt(br.readLine());
-                        if (shape == 3 || shape == 4 || shape == 6)
+                        }
+                        if (shape == 3 || shape == 4 || shape == 6) {
+                            System.out.print("Please enter the height:\n");
                             height = Integer.parseInt(br.readLine());
+                        }
                         if (shape == 5) {
+                            System.out.print("Please enter the length of diagonal 1:\n");
                             diag1 = Integer.parseInt(br.readLine());
+                            System.out.print("Please enter the length of diagonal 2:\n");
                             diag2 = Integer.parseInt(br.readLine());
                         }
                         if (shape == 6) {
+                            System.out.print("Please enter the length of top:\n");
                             top = Integer.parseInt(br.readLine());
+                            System.out.print("Please enter the length of bottom:\n");
                             bot = Integer.parseInt(br.readLine());
                         }
                         Quadrilateral q;
@@ -159,7 +178,7 @@ public class Main {
                             }
                         }
                         if (counter > 0) {
-                            System.out.print("Enter the number of the object you want to delete\n");
+                            System.out.print("Enter the index of the object you want to delete\n");
                             input = Integer.parseInt(br.readLine());
                             index_real = input - 1;
                             storage.get(index_real).remove();
@@ -176,7 +195,7 @@ public class Main {
                         System.out.print("Nothing to manipulate\n");
                         break;
                     }
-                    for (int i = 0; i < storage.size(); i++) {
+                    for (int i = 0; i < storage.size(); i++) { // printing out the entire list of databse
                         System.out.printf("%d. ", i + 1);
                         if (storage.get(i).getClass() == Square.class)
                             System.out.print("Square\n");
@@ -195,9 +214,19 @@ public class Main {
                     input = Integer.parseInt(br.readLine());
                     index_real = input - 1;
                     System.out.print(index_real + " " + storage.get(index_real).toString() + "\n");
+
+
+
+
+
+
+
+
+
                     //********************** Square **********************
                     if (storage.get(index_real).getClass() == Square.class) {
-                        System.out.print("What is the new side length?\n");
+                        System.out.print("What aspect would you like to change?\n");
+                        System.out.print("1. Side 1\n");
                         input2 = Integer.parseInt(br.readLine());
                         ((Square) storage.get(index_real)).setSide1(input2);
                     }
