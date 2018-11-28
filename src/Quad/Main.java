@@ -41,14 +41,16 @@ public class Main {
                 //********************** Adding a shape ********************************************************************************************
                 case 1:
                     if (storage.size() == 20) {
+                        System.out.print("************************************************************\n");
                         System.out.print("Not enough storage\n");
                         break;
                     }
+                    System.out.print("************************************************************\n");
                     chooseShape();
                     System.out.print("7. Default square\n");
                     shape = Integer.parseInt(br.readLine());
+                    System.out.print("************************************************************\n");
                     do {
-                        boolean check = false;
                         if (shape != 7) {
                             System.out.print("Please enter the length of side 1 (The length of the left slope if it's trapezoid):\n");
                             side1 = Integer.parseInt(br.readLine());
@@ -75,21 +77,27 @@ public class Main {
                         }
                         switch (shape){
                             case 1:
+                                System.out.print("************************************************************\n");
                                 System.out.printf("Side 1: %d\n", side1);
                                 break;
                             case 2:
+                                System.out.print("************************************************************\n");
                                 System.out.printf("Side 1: %d, Side 2: %d\n", side1, side2);
                                 break;
                             case 3:
+                                System.out.print("************************************************************\n");
                                 System.out.printf("Side 1: %d, Height: %d\n", side1, height);
                                 break;
                             case 4:
+                                System.out.print("************************************************************\n");
                                 System.out.printf("Side 1: %d, Side 2: %d, Height: %d\n", side1, side2, height);
                                 break;
                             case 5:
+                                System.out.print("************************************************************\n");
                                 System.out.printf("Side 1: %d, Side 2: %d, Diagonal 1: %d, Diagonal 2: %d\n", side1, side2, diag1, diag2);
                                 break;
                             case 6:
+                                System.out.print("************************************************************\n");
                                 System.out.printf("Side 1: %d, Side 2: %d, Height: %d, Top: %d, Base: %d\n", side1, side2, height, top, bot);
                                 break;
                         }
@@ -124,17 +132,21 @@ public class Main {
                             storage.add(t);
                             break;
                         case 7:
-                            s = new Square(1);
+                            //==============================================================
+                            s = new Square(); // Utilize default constructor to create square with side length of 0
                             storage.add(s);
                             break;
+                            //==============================================================
                     }
                     break;
                 //********************** Remove a shape ****************************************************************************************
                 case 2:
                     if (storage.size() == 0) {
+                        System.out.print("************************************************************\n");
                         System.out.print("Nothing to remove\n");
                         break;
                     }
+                    System.out.print("************************************************************\n");
                     chooseShape();
                     System.out.print("7. Specific shape with specific characteristic\n");
                     shape = Integer.parseInt(br.readLine());
@@ -152,12 +164,14 @@ public class Main {
                             }
                         }
                         if (counter > 0) {
+                            System.out.print("************************************************************\n");
                             System.out.print("Enter the index of the object you want to delete\n");
                             input = Integer.parseInt(br.readLine());
                             index_real = input - 1;
                             storage.get(index_real).remove();
                             storage.remove(index_real);
                         } else {
+                            System.out.print("************************************************************\n");
                             System.out.print("No such shape is found\n");
                         }
                     } else { // user choose to check of these is a specific shape in the database
@@ -227,9 +241,11 @@ public class Main {
                 //********************** Manipulate ****************************************************************************************
                 case 3:
                     if (storage.size() == 0) {
+                        System.out.print("************************************************************\n");
                         System.out.print("Nothing to manipulate\n");
                         break;
                     }
+                    System.out.print("************************************************************\n");
                     for (int i = 0; i < storage.size(); i++) { // printing out the entire list of databse
                         System.out.printf("%d. ", i + 1);
                         if (storage.get(i).getClass() == Square.class)
@@ -271,6 +287,7 @@ public class Main {
                         System.out.print("5. Base\n");
                     }
                     input2 = Integer.parseInt(br.readLine());
+                    System.out.print("************************************************************\n");
                     System.out.print("What is the new value?\n");
                     input3 = Integer.parseInt(br.readLine());
                     if (storage.get(index_real).getClass() == Square.class) {
@@ -352,9 +369,11 @@ public class Main {
                 //********************** Extract **************************************************************************************************************
                 case 4:
                     if (storage.size() == 0) {
+                        System.out.print("************************************************************\n");
                         System.out.print("Nothing to extract\n");
                         break;
                     }
+                    System.out.print("************************************************************\n");
                     for (int i = 0; i < storage.size(); i++) {
                         System.out.printf("%d. ", i + 1);
                         if (storage.get(i).getClass() == Square.class)
@@ -371,16 +390,19 @@ public class Main {
                             System.out.print("Trapezoid\n");
                     }
                     index_real = -1;
+                    System.out.print("************************************************************\n");
                     System.out.print("Do you want to search by index or by key?\n");
                     System.out.print("1. Index\n");
                     System.out.print("2. Key\n");
                     input = Integer.parseInt(br.readLine());
                     if (input == 1) {
+                        System.out.print("************************************************************\n");
                         System.out.print("Enter the index of the shape you want to extract:\n");
                         input = Integer.parseInt(br.readLine()); // The index of the shape the user want to access
                         index_real = input - 1;
                     }
                     else {
+                        System.out.print("************************************************************\n");
                         System.out.print("Please enter the key \n(Shape type followed by a number with space in between)\n");
                         stringInput = br.readLine();
                         boolean check = false;
@@ -398,6 +420,7 @@ public class Main {
                         }
                     }
                     //---------------------------------------------------------------------------------------------
+                    System.out.print("************************************************************\n");
                     System.out.print("What would you like to know about this shape?\n");
                     System.out.print("1. Amount of total Quadrilateral\n");
                     System.out.print("2. Amount of such shape selected\n");
@@ -406,6 +429,7 @@ public class Main {
                     //********************** Square **********************
                     if (storage.get(index_real).getClass() == Square.class) {
                         System.out.print("5. Side 1\n");
+                        System.out.print("************************************************************\n");
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
@@ -429,6 +453,7 @@ public class Main {
                     else if (storage.get(index_real).getClass() == Rectangle.class) {
                         System.out.print("5. Side 1\n");
                         System.out.print("6. Side 2\n");
+                        System.out.print("************************************************************\n");
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
@@ -455,6 +480,7 @@ public class Main {
                     else if (storage.get(index_real).getClass() == Rhombus.class) {
                         System.out.print("5. Side 1\n");
                         System.out.print("6. Height\n");
+                        System.out.print("************************************************************\n");
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
@@ -483,6 +509,7 @@ public class Main {
                         System.out.print("5. Side 1\n");
                         System.out.print("6. Side 2\n");
                         System.out.print("7. Height\n");
+                        System.out.print("************************************************************\n");
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
@@ -514,6 +541,7 @@ public class Main {
                         System.out.print("6. Side 2\n");
                         System.out.print("7. Diagonal 1\n");
                         System.out.print("8. Diagonal 2\n");
+                        System.out.print("************************************************************\n");
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
@@ -549,6 +577,7 @@ public class Main {
                         System.out.print("7. Top\n");
                         System.out.print("8. Bottom\n");
                         System.out.print("9. Height\n");
+                        System.out.print("************************************************************\n");
                         input2 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
@@ -593,6 +622,7 @@ public class Main {
             choice1();
             input = Integer.parseInt(br.readLine());
         }
+        System.out.print("************************************************************\n");
         System.out.print("End of program\n");
     }
     private static void choice1() {
