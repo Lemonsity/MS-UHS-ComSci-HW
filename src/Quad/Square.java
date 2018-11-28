@@ -2,18 +2,23 @@ package Quad;
 
 public class Square extends Quadrilateral{
     private int side1;
+    private String key;
     private static int squareNum;
     public Square(){
         super();
         side1 = 0;
-        if (getClass() == Square.class)
+        if (getClass() == Square.class) {
             squareNum += 1;
+            key = "Square " + squareNum;
+        }
     }
     public Square (int side1) {
         super();
         this.side1 = side1;
-        if (getClass() == Square.class)
+        if (getClass() == Square.class) {
             squareNum += 1;
+            key = "Square " + squareNum;
+        }
     }
 
     public void setSide1(int side1) { this.side1 = side1; }
@@ -23,6 +28,9 @@ public class Square extends Quadrilateral{
     }
 
     public int getNum() { return squareNum; }
+
+    @Override
+    public String getKey() { return key; }
 
     public void remove() {
         if (getClass() == Square.class) {

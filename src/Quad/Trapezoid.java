@@ -7,6 +7,7 @@ public class Trapezoid extends Quadrilateral {
     private int side1;
     private int side2;
     private static int trapNum;
+    private String key;
     public Trapezoid() {
         super();
         top = 0;
@@ -14,8 +15,10 @@ public class Trapezoid extends Quadrilateral {
         height = 0;
         side1 = 0;
         side2 = 0;
-        if (getClass() == Trapezoid.class)
+        if (getClass() == Trapezoid.class) {
             trapNum += 1;
+            key = "Trapezoid " + (trapNum);
+        }
     }
     public Trapezoid ( int top, int bot, int height, int side1, int side2) {
         this.side1 = side1;
@@ -23,8 +26,10 @@ public class Trapezoid extends Quadrilateral {
         this.height = height;
         this.top = top;
         this.bot = bot;
-        if (getClass() == Trapezoid.class)
+        if (getClass() == Trapezoid.class) {
             trapNum += 1;
+            key = "Trapezoid " + (trapNum);
+        }
     }
 
     public void setTop(int top) { this.top = top; }
@@ -38,6 +43,7 @@ public class Trapezoid extends Quadrilateral {
     public int getHeight() { return height; }
     public int getSide1() { return side1; }
     public int getSide2() { return side2; }
+    public String getKey() { return key; }
 
     public int getNum() { return trapNum;}
 

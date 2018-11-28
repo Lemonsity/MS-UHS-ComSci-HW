@@ -15,6 +15,7 @@ public class Main {
         int input; // Primary input, use to track the index of the shape when user choose
         int input2; // After choosing the index of the shape, the second option: What characteristic they want to change / What characeristic they want to know
         int input3; // What the user want to characteristic to be changed into
+        String stringInput = "";
         int counter;
         int index_real;
         //*************** Characteristic *****************
@@ -35,7 +36,7 @@ public class Main {
         Trapezoid t;
         choice1();
         input = Integer.parseInt(br.readLine());
-        while (input != 5) {
+        while (input != 6) {
             switch (input) {
                 //********************** Adding a shape ********************************************************************************************
                 case 1:
@@ -46,30 +47,57 @@ public class Main {
                     chooseShape();
                     System.out.print("7. Default square\n");
                     shape = Integer.parseInt(br.readLine());
-                    if (shape != 7) {
-                        System.out.print("Please enter the length of side 1 (The length of the left slope if it's trapezoid):\n");
-                        side1 = Integer.parseInt(br.readLine());
-                    }
-                    if (shape == 2 || shape == 4 || shape == 5 || shape == 6) {
-                        System.out.print("Please enter the length of side 1 (The length of the right slope if it's trapezoid):\n");
-                        side2 = Integer.parseInt(br.readLine());
-                    }
-                    if (shape == 3 || shape == 4 || shape == 6) {
-                        System.out.print("Please enter the height:\n");
-                        height = Integer.parseInt(br.readLine());
-                    }
-                    if (shape == 5) {
-                        System.out.print("Please enter length of diagonal 1:\n");
-                        diag1 = Integer.parseInt(br.readLine());
-                        System.out.print("Please enter length of diagonal 2:\n");
-                        diag2 = Integer.parseInt(br.readLine());
-                    }
-                    if (shape == 6) {
-                        System.out.print("Please enter length of top:\n");
-                        top = Integer.parseInt(br.readLine());
-                        System.out.print("Please enter length of bottom:\n");
-                        bot = Integer.parseInt(br.readLine());
-                    }
+                    do {
+                        boolean check = false;
+                        if (shape != 7) {
+                            System.out.print("Please enter the length of side 1 (The length of the left slope if it's trapezoid):\n");
+                            side1 = Integer.parseInt(br.readLine());
+                        }
+                        if (shape == 2 || shape == 4 || shape == 5 || shape == 6) {
+                            System.out.print("Please enter the length of side 2 (The length of the right slope if it's trapezoid):\n");
+                            side2 = Integer.parseInt(br.readLine());
+                        }
+                        if (shape == 3 || shape == 4 || shape == 6) {
+                            System.out.print("Please enter the height:\n");
+                            height = Integer.parseInt(br.readLine());
+                        }
+                        if (shape == 5) {
+                            System.out.print("Please enter length of diagonal 1:\n");
+                            diag1 = Integer.parseInt(br.readLine());
+                            System.out.print("Please enter length of diagonal 2:\n");
+                            diag2 = Integer.parseInt(br.readLine());
+                        }
+                        if (shape == 6) {
+                            System.out.print("Please enter length of top:\n");
+                            top = Integer.parseInt(br.readLine());
+                            System.out.print("Please enter length of bottom:\n");
+                            bot = Integer.parseInt(br.readLine());
+                        }
+                        switch (shape){
+                            case 1:
+                                System.out.printf("Side 1: %d\n", side1);
+                                break;
+                            case 2:
+                                System.out.printf("Side 1: %d, Side 2: %d\n", side1, side2);
+                                break;
+                            case 3:
+                                System.out.printf("Side 1: %d, Height: %d\n", side1, height);
+                                break;
+                            case 4:
+                                System.out.printf("Side 1: %d, Side 2: %d, Height: %d\n", side1, side2, height);
+                                break;
+                            case 5:
+                                System.out.printf("Side 1: %d, Side 2: %d, Diagonal 1: %d, Diagonal 2: %d\n", side1, side2, diag1, diag2);
+                                break;
+                            case 6:
+                                System.out.printf("Side 1: %d, Side 2: %d, Height: %d, Top: %d, Base: %d\n", side1, side2, height, top, bot);
+                                break;
+                        }
+                        if (shape != 7) {
+                            System.out.print("Enter Y if the attribute are what you want. Or anything else if you want ot reenter\n");
+                            stringInput = br.readLine();
+                        }
+                    }while (shape != 7 && !stringInput.equalsIgnoreCase("Y"));
                     switch (shape) {
                         case 1:
                             s = new Square(side1);
@@ -342,9 +370,34 @@ public class Main {
                         else
                             System.out.print("Trapezoid\n");
                     }
-                    System.out.print("Enter the index of the shape you want to extract:\n");
-                    input = Integer.parseInt(br.readLine()); // The index of the shape the user want to access
-                    index_real = input - 1;
+                    index_real = -1;
+                    System.out.print("Do you want to search by index or by key?\n");
+                    System.out.print("1. Index\n");
+                    System.out.print("2. Key\n");
+                    input = Integer.parseInt(br.readLine());
+                    if (input == 1) {
+                        System.out.print("Enter the index of the shape you want to extract:\n");
+                        input = Integer.parseInt(br.readLine()); // The index of the shape the user want to access
+                        index_real = input - 1;
+                    }
+                    else {
+                        System.out.print("Please enter the key \n(Shape type followed by a number with space in between)\n");
+                        stringInput = br.readLine();
+                        boolean check = false;
+                        for (int i = 0; i < storage.size(); i++){
+                            if (storage.get(i).getKey().equalsIgnoreCase(stringInput)) {
+                                check = true;
+                                index_real = i;
+                                System.out.print("Shape found\n");
+                                break;
+                            }
+                        }
+                        if (!check) {
+                            System.out.print("No shape with such key is found\n");
+                            break;
+                        }
+                    }
+                    //---------------------------------------------------------------------------------------------
                     System.out.print("What would you like to know about this shape?\n");
                     System.out.print("1. Amount of total Quadrilateral\n");
                     System.out.print("2. Amount of such shape selected\n");
@@ -527,6 +580,14 @@ public class Main {
                                 break;
                         }
                     }
+                    //--------------------------------------------------------------------------------------
+                    break;
+                case 5:
+                    if (storage.size() == 0) {
+                        System.out.print("Nothing to show\n");
+                    }
+                    for (int i = 0; i < storage.size(); i++)
+                        System.out.print(storage.get(i).toString() + "\n");
                     break;
             }
             choice1();
@@ -541,7 +602,8 @@ public class Main {
         System.out.print("2. Remove a shape\n");
         System.out.print("3. Manipulate one of the shape\n");
         System.out.print("4. Extract info from one shape\n");
-        System.out.print("5. Exit the program\n");
+        System.out.print("5. List all shapes\n");
+        System.out.print("6. Exit the program\n");
     }
     private static void chooseShape() {
         System.out.print("Please choose the shape\n");

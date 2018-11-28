@@ -5,6 +5,7 @@ public class Kite extends Quadrilateral{
     private int side2;
     private int diag1;
     private int diag2;
+    private String key;
     private static int kiteNum;
     public Kite(){
         super();
@@ -12,16 +13,20 @@ public class Kite extends Quadrilateral{
         side2 = 0;
         diag1 = 0;
         diag2 = 0;
-        if (getClass() == Kite.class)
+        if (getClass() == Kite.class) {
             kiteNum += 1;
+            key = "Kite " + kiteNum;
+        }
     }
     public Kite(int side1, int side2, int diag1, int diag2){
         this.side1 = side1;
         this.side2 = side2;
         this.diag1 = diag1;
         this.diag2 = diag2;
-        if (getClass() == Kite.class)
+        if (getClass() == Kite.class) {
             kiteNum += 1;
+            key = "Kite " + kiteNum;
+        }
     }
 
     public void setSide1(int side1) { this.side1 = side1; }
@@ -41,6 +46,7 @@ public class Kite extends Quadrilateral{
     public int getDiag2() {
         return diag2;
     }
+    public String getKey() { return key; }
 
     public int getNum() { return kiteNum; }
 

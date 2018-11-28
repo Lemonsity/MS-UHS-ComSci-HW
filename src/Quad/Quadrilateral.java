@@ -20,4 +20,5 @@ public abstract class Quadrilateral {
     abstract int getNum();
     abstract int findArea();
     abstract int findParameter();
+    abstract String getKey();
 }

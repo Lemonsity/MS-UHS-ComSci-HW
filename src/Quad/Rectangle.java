@@ -2,19 +2,24 @@ package Quad;
 
 public class Rectangle extends Square{
     private int side2;
+    private String key;
     private static int rectNum;
     public Rectangle(){
         super();
         side2 = 0;
-        if (this.getClass() == Rectangle.class)
+        if (this.getClass() == Rectangle.class) {
             rectNum += 1;
+            key = "Rectangle " + rectNum;
+        }
     }
     public Rectangle (int side1, int side2) {
         super();
         setSide1(side1);
         this.side2 = side2;
-        if (this.getClass() == Rectangle.class)
+        if (this.getClass() == Rectangle.class) {
             rectNum += 1;
+            key = "Rectangle " + rectNum;
+        }
     }
 
     public void setSide2(int side2) {
@@ -25,7 +30,13 @@ public class Rectangle extends Square{
         return side2;
     }
 
+    @Override
     public int getNum() { return rectNum; }
+
+    @Override
+    public String getKey() {
+        return key;
+    }
 
     public void remove() {
         if (getClass() == Rectangle.class) {

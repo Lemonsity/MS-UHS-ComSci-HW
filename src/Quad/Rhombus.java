@@ -3,17 +3,22 @@ package Quad;
 public class Rhombus extends Square{
     private int height;
     private static int rhomNum;
+    private String key;
     public Rhombus(){
         super();
         height = 0;
-        if (getClass() == Rhombus.class)
+        if (getClass() == Rhombus.class) {
             rhomNum += 1;
+            key = "Rhombus " + rhomNum;
+        }
     }
     public Rhombus (int side1, int height) {
         setSide1(side1);
         this.height = height;
-        if (getClass() == Rhombus.class)
+        if (getClass() == Rhombus.class) {
             rhomNum += 1;
+            key = "Rh" + rhomNum;
+        }
     }
 
     public void setHeight(int height){
@@ -23,6 +28,11 @@ public class Rhombus extends Square{
     public int getHeight() { return height; }
 
     public int getNum() { return rhomNum; }
+
+    @Override
+    public String getKey() {
+        return key;
+    }
 
     public void remove() {
         if (getClass() == Rhombus.class) {

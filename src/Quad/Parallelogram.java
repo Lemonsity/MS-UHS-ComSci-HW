@@ -2,20 +2,25 @@ package Quad;
 
 public class Parallelogram extends Rectangle{
     private int height;
+    private String key;
     private static int paraNum;
     public Parallelogram(){
         super();
         height = 0;
-        if (getClass() == Parallelogram.class)
+        if (getClass() == Parallelogram.class) {
             paraNum += 1;
+            key = "Parallelogram " + paraNum;
+        }
     }
     public Parallelogram(int side1, int side2, int height) {
         super();
         setSide1(side1);
         setSide2(side2);
         this.height = height;
-        if (getClass() == Parallelogram.class)
+        if (getClass() == Parallelogram.class) {
             paraNum += 1;
+            key = "Parallelogram " + paraNum;
+        }
     }
 
     public void setHeight(int height) {
@@ -27,6 +32,9 @@ public class Parallelogram extends Rectangle{
     }
 
     public int getNum() { return paraNum;}
+
+    @Override
+    public String getKey() { return key; }
 
     public void remove() {
         if (getClass() == Parallelogram.class) {
