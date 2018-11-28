@@ -1,5 +1,7 @@
 package Quad;
 
+import org.w3c.dom.css.Rect;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -15,7 +17,6 @@ public class Main {
         int input3; // What the user want to characteristic to be changed into
         int counter;
         int index_real;
-        int[] indexExist;
         //*************** Characteristic *****************
         int side1 = 0;
         int side2 = 0;
@@ -24,7 +25,15 @@ public class Main {
         int bot = 0;
         int diag1 = 0;
         int diag2 = 0;
-        //************************************************
+        //******************* Shapes *********************
+        Quadrilateral q;
+        Square s;
+        Rectangle r;
+        Rhombus rh;
+        Parallelogram p;
+        Kite k;
+        Trapezoid t;
+
         choice1();
         input = Integer.parseInt(br.readLine());
         while (input != 5) {
@@ -64,32 +73,32 @@ public class Main {
                     }
                     switch (shape) {
                         case 1:
-                            Square s = new Square(side1);
+                            s = new Square(side1);
                             storage.add(s);
                             break;
                         case 2:
-                            Rectangle r = new Rectangle(side1, side2);
+                            r = new Rectangle(side1, side2);
                             storage.add(r);
                             break;
                         case 3:
-                            Rhombus rh = new Rhombus(side1, height);
+                            rh = new Rhombus(side1, height);
                             storage.add(rh);
                             break;
                         case 4:
-                            Parallelogram p = new Parallelogram(side1, side2, height);
+                            p = new Parallelogram(side1, side2, height);
                             storage.add(p);
                             break;
                         case 5:
-                            Kite k = new Kite(side1, side2, diag1, diag2);
+                            k = new Kite(side1, side2, diag1, diag2);
                             storage.add(k);
                             break;
                         case 6:
-                            Trapezoid t = new Trapezoid(top, bot, height, side1, side2);
+                            t = new Trapezoid(top, bot, height, side1, side2);
                             storage.add(t);
                             break;
                         case 7:
-                            Square sd = new Square(1);
-                            storage.add(sd);
+                            s = new Square(1);
+                            storage.add(s);
                             break;
                     }
                     break;
@@ -149,7 +158,6 @@ public class Main {
                             System.out.print("Please enter the length of bottom:\n");
                             bot = Integer.parseInt(br.readLine());
                         }
-                        Quadrilateral q;
                         switch (shape) {
                             case 1:
                                 q = new Square(side1);
@@ -210,34 +218,42 @@ public class Main {
                         else
                             System.out.print("Trapezoid\n");
                     }
+                    //****************************************************************************************
                     System.out.print("Please enter the index of the shape you want to manipulate\n");
                     input = Integer.parseInt(br.readLine());
                     index_real = input - 1;
-                    System.out.print(index_real + " " + storage.get(index_real).toString() + "\n");
-
-
-
-
-
-
-
-
-
-                    //********************** Square **********************
-                    if (storage.get(index_real).getClass() == Square.class) {
-                        System.out.print("What aspect would you like to change?\n");
-                        System.out.print("1. Side 1\n");
-                        input2 = Integer.parseInt(br.readLine());
-                        ((Square) storage.get(index_real)).setSide1(input2);
-                    }
-                    //********************** Rectangle **********************
-                    else if (storage.get(index_real).getClass() == Rectangle.class) {
-                        System.out.print("What aspect would you like to change?\n");
-                        System.out.print("1. Side 1\n");
+                    System.out.print(input + ". " + storage.get(index_real).toString() + "\n");
+                    System.out.print("What aspect would you like to change?\n");
+                    System.out.print("1. Side 1\n");
+                    if (storage.get(index_real).getClass() == Rectangle.class
+                            || storage.get(index_real).getClass() == Parallelogram.class
+                            || storage.get(index_real).getClass() == Kite.class
+                            || storage.get(index_real).getClass() == Trapezoid.class)
                         System.out.print("2. Side 2\n");
-                        input2 = Integer.parseInt(br.readLine());
-                        System.out.print("Enter the new value: \n");
-                        input3 = Integer.parseInt(br.readLine());
+                    if (storage.get(index_real).getClass() == Rhombus.class)
+                        System.out.print("2. Height\n");
+                    if (storage.get(index_real).getClass() == Parallelogram.class
+                            || storage.get(index_real).getClass() == Trapezoid.class)
+                        System.out.print("3. Height\n");
+                    if (storage.get(index_real).getClass() == Kite.class) {
+                        System.out.print("3. Diagonal 1\n");
+                        System.out.print("4. Diagonal 2\n");
+                    }
+                    if (storage.get(index_real).getClass() == Trapezoid.class) {
+                        System.out.print("4. Top\n");
+                        System.out.print("5. Base\n");
+                    }
+                    input2 = Integer.parseInt(br.readLine());
+                    System.out.print("What is the new value?\n");
+                    input3 = Integer.parseInt(br.readLine());
+                    if (storage.get(index_real).getClass() == Square.class) {
+                        switch (input2) {
+                            case 1:
+                                ((Square)storage.get(index_real)).setSide1(input3);
+                                break;
+                        }
+                    }
+                    else if (storage.get(index_real).getClass() == Rectangle.class) {
                         switch (input2) {
                             case 1:
                                 ((Rectangle) storage.get(index_real)).setSide1(input3);
@@ -247,14 +263,7 @@ public class Main {
                                 break;
                         }
                     }
-                    //********************** Rhombus **********************
                     else if (storage.get(index_real).getClass() == Rhombus.class) {
-                        System.out.print("What aspect would you like to change?\n");
-                        System.out.print("1. Side 1\n");
-                        System.out.print("2. Height\n");
-                        input2 = Integer.parseInt(br.readLine());
-                        System.out.print("Enter the new value: \n");
-                        input3 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
                                 ((Rhombus) storage.get(index_real)).setSide1(input3);
@@ -264,15 +273,7 @@ public class Main {
                                 break;
                         }
                     }
-                    //********************** Parallelogram **********************
                     else if (storage.get(index_real).getClass() == Parallelogram.class) {
-                        System.out.print("What aspect would you like to change?\n");
-                        System.out.print("1. Side 1\n");
-                        System.out.print("2. Side 2\n");
-                        System.out.print("3. Height\n");
-                        input2 = Integer.parseInt(br.readLine());
-                        System.out.print("Enter the new value: \n");
-                        input3 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
                                 ((Parallelogram) storage.get(index_real)).setSide1(input3);
@@ -285,16 +286,7 @@ public class Main {
                                 break;
                         }
                     }
-                    //********************** Kite **********************
                     else if (storage.get(index_real).getClass() == Kite.class) {
-                        System.out.print("What aspect would you like to change?\n");
-                        System.out.print("1. Side 1\n");
-                        System.out.print("2. Side 2\n");
-                        System.out.print("3. Diagonal 1\n");
-                        System.out.print("4. Diagonal 2\n");
-                        input2 = Integer.parseInt(br.readLine());
-                        System.out.print("Enter the new value: \n");
-                        input3 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
                                 ((Kite) storage.get(index_real)).setSide1(input3);
@@ -310,17 +302,7 @@ public class Main {
                                 break;
                         }
                     }
-                    //********************** Trapezoid **********************
                     else {
-                        System.out.print("What aspect would you like to change?\n");
-                        System.out.print("1. Side 1\n");
-                        System.out.print("2. Side 2\n");
-                        System.out.print("3. Top\n");
-                        System.out.print("4. Bottom\n");
-                        System.out.print("5. Height\n");
-                        input2 = Integer.parseInt(br.readLine());
-                        System.out.print("Enter the new value: \n");
-                        input3 = Integer.parseInt(br.readLine());
                         switch (input2) {
                             case 1:
                                 ((Trapezoid) storage.get(index_real)).setSide1(input3);
