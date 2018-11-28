@@ -50,7 +50,7 @@ public class Trapezoid extends Quadrilateral {
     }
     @Override
     public String toString() {
-        return "<Trapezoid> Slope 1: " + side1 + ", Slope 2: " + side2 + ", Top: " + top + ", Bottom: " + bot + ", Height: " + height;
+        return "<Trapezoid> Slope 1: " + side1 + ", Slope 2: " + side2 + ", Height: " + height + ", Top: " + top + ", Bottom: " + bot;
     }
     @Override
     public int findArea() { return (top + bot) * height / 2; }

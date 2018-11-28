@@ -33,7 +33,6 @@ public class Main {
         Parallelogram p;
         Kite k;
         Trapezoid t;
-
         choice1();
         input = Integer.parseInt(br.readLine());
         while (input != 5) {
@@ -311,13 +310,13 @@ public class Main {
                                 ((Trapezoid) storage.get(index_real)).setSide2(input3);
                                 break;
                             case 3:
-                                ((Trapezoid) storage.get(index_real)).setTop(input3);
+                                ((Trapezoid) storage.get(index_real)).setHeight(input3);
                                 break;
                             case 4:
-                                ((Trapezoid) storage.get(index_real)).setBot(input3);
+                                ((Trapezoid) storage.get(index_real)).setTop(input3);
                                 break;
                             case 5:
-                                ((Trapezoid) storage.get(index_real)).setHeight(input3);
+                                ((Trapezoid) storage.get(index_real)).setBot(input3);
                                 break;
                         }
                     }

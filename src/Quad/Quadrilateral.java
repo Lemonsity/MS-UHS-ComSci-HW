@@ -14,7 +14,6 @@ public abstract class Quadrilateral {
      * But I think this way show better understanding of OOP
      */
     public void subtractAmount() { quadNum -= 1;}
-
     public int getQuadNum() { return quadNum; }
 
     abstract void remove(); // When a shape is removed from data base
