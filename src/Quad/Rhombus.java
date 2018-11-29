@@ -55,16 +55,11 @@ public class Rhombus extends Square{
     }
     @Override
     public boolean equals(Object o){
-        if (this == o)
-            return true;
-        else if (o == null)
-            return false;
-        else if (this.getClass() != o.getClass())
-            return false;
-        Rhombus object = (Rhombus) o;
-        if (this.getSide1() != object.getSide1()
-                || this.getHeight() != object.getHeight())
-            return false;
-        return true;
+        if (o.getClass() ==  Rhombus.class){
+            Rhombus ob = (Rhombus) o;
+            return this.getSide1() == ob.getSide1()
+                    && this.getHeight() == ob.getHeight();
+        }
+        return false;
     }
 }

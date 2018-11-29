@@ -66,19 +66,10 @@ public class Trapezoid extends Quadrilateral {
     }
     @Override
     public boolean equals(Object o){
-        if (this == o)
-            return true;
-        else if (o == null)
-            return false;
-        else if (this.getClass() != o.getClass())
-            return false;
-        Trapezoid object = (Trapezoid) o;
-        if (this.getSide1() != object.getSide1()
-                || this.getSide2() != object.getSide2()
-                || this.getTop() != object.getTop()
-                || this.getBot() != object.getBot()
-                || this.getHeight() != object.getHeight())
-            return false;
-        return true;
+        if (o.getClass() == Trapezoid.class){
+            Square ob = (Square) o;
+            return this.getSide1() == ob.getSide1();
+        }
+        return false;
     }
 }

@@ -47,96 +47,123 @@ public class Main {
                     }
                     System.out.print("************************************************************\n");
                     chooseShape();
-                    System.out.print("7. Default square\n");
                     shape = Integer.parseInt(br.readLine());
                     System.out.print("************************************************************\n");
-                    do {
-                        if (shape != 7) {
-                            System.out.print("Please enter the length of side 1 (The length of the left slope if it's trapezoid):\n");
-                            side1 = Integer.parseInt(br.readLine());
-                        }
-                        if (shape == 2 || shape == 4 || shape == 5 || shape == 6) {
-                            System.out.print("Please enter the length of side 2 (The length of the right slope if it's trapezoid):\n");
-                            side2 = Integer.parseInt(br.readLine());
-                        }
-                        if (shape == 3 || shape == 4 || shape == 6) {
-                            System.out.print("Please enter the height:\n");
-                            height = Integer.parseInt(br.readLine());
-                        }
-                        if (shape == 5) {
-                            System.out.print("Please enter length of diagonal 1:\n");
-                            diag1 = Integer.parseInt(br.readLine());
-                            System.out.print("Please enter length of diagonal 2:\n");
-                            diag2 = Integer.parseInt(br.readLine());
-                        }
-                        if (shape == 6) {
-                            System.out.print("Please enter length of top:\n");
-                            top = Integer.parseInt(br.readLine());
-                            System.out.print("Please enter length of bottom:\n");
-                            bot = Integer.parseInt(br.readLine());
-                        }
-                        switch (shape){
+                    System.out.print("Would you like to create a default shape or custom shape?\n");
+                    System.out.print("1. Default\n");
+                    System.out.print("2. Custom\n");
+                    input = Integer.parseInt(br.readLine());
+                    if (input == 1) {
+                        switch (shape) {
                             case 1:
-                                System.out.print("************************************************************\n");
-                                System.out.printf("Side 1: %d\n", side1);
+                                s = new Square();
+                                storage.add(s);
                                 break;
                             case 2:
-                                System.out.print("************************************************************\n");
-                                System.out.printf("Side 1: %d, Side 2: %d\n", side1, side2);
+                                r = new Rectangle();
+                                storage.add(r);
                                 break;
                             case 3:
-                                System.out.print("************************************************************\n");
-                                System.out.printf("Side 1: %d, Height: %d\n", side1, height);
+                                rh = new Rhombus();
+                                storage.add(rh);
                                 break;
                             case 4:
-                                System.out.print("************************************************************\n");
-                                System.out.printf("Side 1: %d, Side 2: %d, Height: %d\n", side1, side2, height);
+                                p = new Parallelogram();
+                                storage.add(p);
                                 break;
                             case 5:
-                                System.out.print("************************************************************\n");
-                                System.out.printf("Side 1: %d, Side 2: %d, Diagonal 1: %d, Diagonal 2: %d\n", side1, side2, diag1, diag2);
+                                k = new Kite();
+                                storage.add(k);
                                 break;
                             case 6:
-                                System.out.print("************************************************************\n");
-                                System.out.printf("Side 1: %d, Side 2: %d, Height: %d, Top: %d, Base: %d\n", side1, side2, height, top, bot);
+                                t = new Trapezoid();
+                                storage.add(t);
                                 break;
                         }
-                        if (shape != 7) {
-                            System.out.print("Enter Y if the attribute are what you want. Or anything else if you want ot reenter\n");
-                            stringInput = br.readLine();
+                    }
+                    else if (input == 2) {
+                        do {
+                            if (shape != 7) {
+                                System.out.print("Please enter the length of side 1 (The length of the left slope if it's trapezoid):\n");
+                                side1 = Integer.parseInt(br.readLine());
+                            }
+                            if (shape == 2 || shape == 4 || shape == 5 || shape == 6) {
+                                System.out.print("Please enter the length of side 2 (The length of the right slope if it's trapezoid):\n");
+                                side2 = Integer.parseInt(br.readLine());
+                            }
+                            if (shape == 3 || shape == 4 || shape == 6) {
+                                System.out.print("Please enter the height:\n");
+                                height = Integer.parseInt(br.readLine());
+                            }
+                            if (shape == 5) {
+                                System.out.print("Please enter length of diagonal 1:\n");
+                                diag1 = Integer.parseInt(br.readLine());
+                                System.out.print("Please enter length of diagonal 2:\n");
+                                diag2 = Integer.parseInt(br.readLine());
+                            }
+                            if (shape == 6) {
+                                System.out.print("Please enter length of top:\n");
+                                top = Integer.parseInt(br.readLine());
+                                System.out.print("Please enter length of bottom:\n");
+                                bot = Integer.parseInt(br.readLine());
+                            }
+                            switch (shape) {
+                                case 1:
+                                    System.out.print("************************************************************\n");
+                                    System.out.printf("Side 1: %d\n", side1);
+                                    break;
+                                case 2:
+                                    System.out.print("************************************************************\n");
+                                    System.out.printf("Side 1: %d, Side 2: %d\n", side1, side2);
+                                    break;
+                                case 3:
+                                    System.out.print("************************************************************\n");
+                                    System.out.printf("Side 1: %d, Height: %d\n", side1, height);
+                                    break;
+                                case 4:
+                                    System.out.print("************************************************************\n");
+                                    System.out.printf("Side 1: %d, Side 2: %d, Height: %d\n", side1, side2, height);
+                                    break;
+                                case 5:
+                                    System.out.print("************************************************************\n");
+                                    System.out.printf("Side 1: %d, Side 2: %d, Diagonal 1: %d, Diagonal 2: %d\n", side1, side2, diag1, diag2);
+                                    break;
+                                case 6:
+                                    System.out.print("************************************************************\n");
+                                    System.out.printf("Side 1: %d, Side 2: %d, Height: %d, Top: %d, Base: %d\n", side1, side2, height, top, bot);
+                                    break;
+                            }
+                            if (shape != 7) {
+                                System.out.print("Enter Y if the attribute is what you want. Or anything else if you want ot reenter\n");
+                                stringInput = br.readLine();
+                            }
+                        } while (shape != 7 && !stringInput.equalsIgnoreCase("Y"));
+                        switch (shape) {
+                            case 1:
+                                s = new Square(side1);
+                                storage.add(s);
+                                break;
+                            case 2:
+                                r = new Rectangle(side1, side2);
+                                storage.add(r);
+                                break;
+                            case 3:
+                                rh = new Rhombus(side1, height);
+                                storage.add(rh);
+                                break;
+                            case 4:
+                                p = new Parallelogram(side1, side2, height);
+                                storage.add(p);
+                                break;
+                            case 5:
+                                k = new Kite(side1, side2, diag1, diag2);
+                                storage.add(k);
+                                break;
+                            case 6:
+                                t = new Trapezoid(top, bot, height, side1, side2);
+                                storage.add(t);
+                                break;
                         }
-                    }while (shape != 7 && !stringInput.equalsIgnoreCase("Y"));
-                    switch (shape) {
-                        case 1:
-                            s = new Square(side1);
-                            storage.add(s);
-                            break;
-                        case 2:
-                            r = new Rectangle(side1, side2);
-                            storage.add(r);
-                            break;
-                        case 3:
-                            rh = new Rhombus(side1, height);
-                            storage.add(rh);
-                            break;
-                        case 4:
-                            p = new Parallelogram(side1, side2, height);
-                            storage.add(p);
-                            break;
-                        case 5:
-                            k = new Kite(side1, side2, diag1, diag2);
-                            storage.add(k);
-                            break;
-                        case 6:
-                            t = new Trapezoid(top, bot, height, side1, side2);
-                            storage.add(t);
-                            break;
-                        case 7:
-                            //==============================================================
-                            s = new Square(); // Utilize default constructor to create square with side length of 0
-                            storage.add(s);
-                            break;
-                            //==============================================================
                     }
                     break;
                 //********************** Remove a shape ****************************************************************************************

@@ -71,18 +71,14 @@ public class Kite extends Quadrilateral{
     }
     @Override
     public boolean equals(Object o){
-        if (this == o)
-            return true;
-        else if (o == null)
-            return false;
-        else if (this.getClass() != o.getClass())
-            return false;
-        Kite object = (Kite) o;
-        if (this.getSide1() != object.getSide1()
-                || this.getSide2() != object.getSide2()
-                || this.getDiag1() != object.getDiag1()
-                || this.getDiag2() != object.getDiag2())
-            return false;
-        return true;
+        if (o.getClass() ==  Kite.class){
+            Kite ob = (Kite) o;
+            return this.getSide1() == ob.getSide1()
+                    && this.getSide2() == ob.getSide2()
+                    && this.getDiag1() == ob.getDiag1()
+                    && this.getDiag2() == ob.getDiag2();
+        }
+        return false;
+
     }
 }

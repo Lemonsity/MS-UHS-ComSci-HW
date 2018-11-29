@@ -50,15 +50,10 @@ public class Square extends Quadrilateral{
     }
     @Override
     public boolean equals(Object o){
-        if (this == o)
-            return true;
-        else if (o == null)
-            return false;
-        else if (this.getClass() != o.getClass())
-            return false;
-        Square object = (Square) o;
-        if (this.getSide1() != object.getSide1())
-            return false;
-        return true;
+        if (o.getClass() == Square.class){
+            Square ob = (Square) o;
+            return this.getSide1() == ob.getSide1();
+        }
+        return false;
     }
 }

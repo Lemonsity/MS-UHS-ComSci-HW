@@ -7,9 +7,12 @@ Requirement and how to examine:
         - User will be prompt "not enough storage" if attempt to add more
     
     Create custom or default shape:
-        - After pressing 1 in the main menu, user will be given 7 choices
-        - Choose the first 6 will trigger more input to create a specific shape
-        - Choose 7 will add a Square with side length of 0 using default constructor (Will by highlighted in code using comment)
+        - After entering 1 in the main menu, user will have 6 choices
+        - Whatever shape use decide to create, they will be given two choices
+            1. Default shape
+            2. Custom shape
+        - Choosing default shape will create a shape of choice with all characteristic being 0
+        - CHoosing custom shape will trigger user to enter more info
         
     Require user to confirm attribute:
         - If use decide to create a specific shape

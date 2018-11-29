@@ -1,5 +1,7 @@
 package Quad;
 
+import org.w3c.dom.css.Rect;
+
 public class Rectangle extends Square{
     private int side2;
     private String key;
@@ -58,16 +60,11 @@ public class Rectangle extends Square{
     }
     @Override
     public boolean equals(Object o){
-        if (this == o)
-            return true;
-        else if (o == null)
-            return false;
-        else if (this.getClass() != o.getClass())
-            return false;
-        Rectangle object = (Rectangle) o;
-        if (this.getSide1() != object.getSide1()
-                || this.getSide2() != object.getSide2())
-            return false;
-        return true;
+        if (o.getClass() ==  Rectangle.class){
+            Rectangle ob = (Rectangle) o;
+            return this.getSide1() == ob.getSide1()
+                    && this.getSide2() == ob.getSide2();
+        }
+        return false;
     }
 }
