@@ -49,7 +49,7 @@ public class Parallelogram extends Rectangle{
     }
     @Override
     public int findArea(){
-        return height * getSide1();
+        return getHeight() * getSide1();
     }
     @Override
     public int findParameter(){

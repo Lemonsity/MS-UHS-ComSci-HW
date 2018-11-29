@@ -39,16 +39,14 @@ public class Square extends Quadrilateral{
         }
     }
     @Override
-    public String toString() {
-        return "<Square> Side 1: " + getSide1();
-    }
+    public String toString() { return "<Square> Side 1: " + getSide1(); }
     @Override
     public int findArea() {
-        return side1 * side1;
+        return getSide1() * getSide1();
     }
     @Override
     public int findParameter() {
-        return side1 * 4;
+        return getSide1() * 4;
     }
     @Override
     public boolean equals(Object o){

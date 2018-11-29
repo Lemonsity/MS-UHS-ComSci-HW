@@ -47,7 +47,7 @@ public class Rhombus extends Square{
     }
     @Override
     public int findArea(){
-        return getSide1() * height;
+        return getSide1() * getHeight();
     }
     @Override
     public int findParameter(){

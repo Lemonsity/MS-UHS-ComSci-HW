@@ -59,15 +59,15 @@ public class Kite extends Quadrilateral{
 
     @Override
     public String toString(){
-        return "<Kite> Side 1:" + side1 + ", Side 2: " + side2 + ", Diagonal 1: " +  diag1 + ", Diagonal 2: " + diag2;
+        return "<Kite> Side 1:" + getSide1() + ", Side 2: " + getSide2() + ", Diagonal 1: " +  getDiag1() + ", Diagonal 2: " + getDiag2();
     }
     @Override
     public int findArea(){
-        return diag1 * diag2 / 2;
+        return getDiag1() * getDiag2() / 2;
     }
     @Override
     public int findParameter() {
-        return (side1 + side2) * 2;
+        return (getSide1() + getSide2()) * 2;
     }
     @Override
     public boolean equals(Object o){

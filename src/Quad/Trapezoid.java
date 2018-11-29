@@ -56,13 +56,13 @@ public class Trapezoid extends Quadrilateral {
     }
     @Override
     public String toString() {
-        return "<Trapezoid> Slope 1: " + side1 + ", Slope 2: " + side2 + ", Height: " + height + ", Top: " + top + ", Bottom: " + bot;
+        return "<Trapezoid> Slope 1: " + getSide1() + ", Slope 2: " + getSide2() + ", Height: " + getHeight() + ", Top: " + getTop() + ", Bottom: " + getBot();
     }
     @Override
-    public int findArea() { return (top + bot) * height / 2; }
+    public int findArea() { return (getTop() + getBot()) * getHeight()/ 2; }
     @Override
     public int findParameter(){
-        return top + bot + side1 + side2;
+        return getTop() + getBot() + getSide1() + getSide2();
     }
     @Override
     public boolean equals(Object o){
