@@ -13,7 +13,7 @@ public class Test {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int choice; // Choice made in main menu
-        int choiceShape;
+        int index;
         mainMenu();
         choice = Integer.parseInt(input());
         while (choice != 5) { // if user doesn't choose to end program (5)
@@ -23,14 +23,22 @@ public class Test {
                     shapeInitial(Integer.parseInt(input()));
                     break;
                 case 2:
+                    indexKeyMenu();
+                    choice = Integer.parseInt(input());
+                    if (choice == 1)
+                        index = searchByIndex();
+                    else
+                        index = searchByKey();
+                    removeShape(index);
                     break;
                 case 3:
                     indexKeyMenu();
                     choice = Integer.parseInt(input());
                     if (choice == 1)
-                        searchByIndex();
+                        index = searchByIndex();
                     else
-                        searchByKey();
+                        index = searchByKey();
+                    chooseActionToShape(index);
                     break;
                 case 4:
                     list();
@@ -42,11 +50,6 @@ public class Test {
         end(); // End of program
     }
 
-    /**
-     * shapeInitial()
-     *
-     * choose default or custom
-     */
     public static void shapeInitial(int shape) throws IOException{
         separator();
         System.out.print("You are about to create a ");
@@ -79,12 +82,6 @@ public class Test {
         else
             customShape(shape);
     }
-
-    /**
-     * defaultShape()
-     *
-     * method that adds default shape
-     */
     public static void defaultShape(int shape) {
         switch (shape) {
             case 1:
@@ -107,12 +104,6 @@ public class Test {
                 break;
         }
     }
-
-    /**
-     * customShape()
-     *
-     * method that adds custom shape
-     */
     public static void customShape(int shape) throws IOException{
         String reenter;
         double side1, side2 = 0, height = 0, diag1 = 0, diag2 = 0, top = 0, bot = 0; // Shape characteristic
@@ -157,7 +148,7 @@ public class Test {
                 System.out.printf("Top: %f, ", top);
                 System.out.printf("Base: %f, ", bot);
             }
-            System.out.print("\nEnter Y if you are satisfied with the characteristic\n");
+            System.out.print("\nEnter 'Y' if you are satisfied with the characteristic\n");
             System.out.print("Enter anything else if you want to reenter\n");
             reenter = input();
         } while (!reenter.equalsIgnoreCase("Y"));
@@ -183,16 +174,15 @@ public class Test {
         }
     }
 
-    public static void searchByIndex() throws IOException{
+    public static int searchByIndex() throws IOException{
         separator();
         for (int i = 0; i < database.size(); i++)
             System.out.print((i + 1) + database.get(i).getClassName() + "\n");
         separator();
         System.out.print("Please enter the index of the shape\n");
-        chooseAction(Integer.parseInt(input()) - 1);
+        return Integer.parseInt(input()) - 1;
     }
-
-    public static void searchByKey() throws IOException{
+    public static int searchByKey() throws IOException{
         int index = -1;
         String key;
         separator();
@@ -204,10 +194,10 @@ public class Test {
                 break;
             }
         }
-        chooseAction(index);
+        return index;
     }
 
-    public static void chooseAction(int index) throws IOException{
+    public static void chooseActionToShape(int index) throws IOException{
         int choice;
         separator();
         if (index < 0 || index >= database.size()){
@@ -240,7 +230,7 @@ public class Test {
             }
         }
     }
-
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     public static void manipulateHub(int index) throws IOException{
         int input;
         int newValue;
@@ -296,7 +286,6 @@ public class Test {
                 break;
         }
     }
-
     public static void manipulateSide1(int index, int input) {
         if (database.get(index).getClass() == Square.class)
             ((Square)database.get(index)).setSide1(input);
@@ -347,9 +336,23 @@ public class Test {
 
     }
 
-    /**
-     * List all shapes
-     */
+    public static void removeShape(int index) throws IOException{
+        String input;
+        separator();
+        if (index < 0 || index >= database.size()){
+            System.out.print("No such shape is found\n");
+            return;
+        }
+        System.out.print(database.get(index).toString() + "\n");
+        System.out.print("\nEnter Y if you want to remove the shape\n");
+        System.out.print("Enter anything else if you you changed your mind\n");
+        input = input();
+        if (input.equalsIgnoreCase("Y")){
+            database.get(index).remove();
+            database.remove(index);
+        }
+    }
+
     public static void list() {
         separator();
         for (int i = 0; i < database.size(); i++)
