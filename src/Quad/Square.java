@@ -3,7 +3,7 @@ package Quad;
 public class Square extends Quadrilateral{
     private double side1;
     private String key;
-    private static double squareNum;
+    private static int squareNum;
     public Square(){
         super();
         side1 = 0;
@@ -27,7 +27,9 @@ public class Square extends Quadrilateral{
         return side1;
     }
 
-    public double getNum() { return squareNum; }
+    public static int getNum() { return squareNum; }
+
+    public String getClassName() { return "Square "; }
 
     @Override
     public String getKey() { return key; }

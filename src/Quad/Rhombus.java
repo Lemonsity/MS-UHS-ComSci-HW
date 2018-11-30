@@ -2,7 +2,7 @@ package Quad;
 
 public class Rhombus extends Square{
     private double height;
-    private static double rhomNum;
+    private static int rhomNum;
     private String key;
     public Rhombus(){
         super();
@@ -27,7 +27,10 @@ public class Rhombus extends Square{
 
     public double getHeight() { return height; }
 
-    public double getNum() { return rhomNum; }
+    public static int getNum() { return rhomNum; }
+
+    public String getClassName() { return "Rhombus "; }
+
 
     @Override
     public String getKey() {

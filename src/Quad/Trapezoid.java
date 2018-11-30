@@ -6,7 +6,7 @@ public class Trapezoid extends Quadrilateral {
     private double height;
     private double side1;
     private double side2;
-    private static double trapNum;
+    private static int trapNum;
     private String key;
     public Trapezoid() {
         super();
@@ -43,8 +43,8 @@ public class Trapezoid extends Quadrilateral {
     public double getSide1() { return side1; }
     public double getSide2() { return side2; }
     public String getKey() { return key; }
-
-    public double getNum() { return trapNum;}
+    public String getClassName() { return "Trapezoid "; }
+    public static int getNum() { return trapNum;}
 
     public void remove() {
         if (getClass() == Trapezoid.class) {

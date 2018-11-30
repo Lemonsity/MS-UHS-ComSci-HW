@@ -5,7 +5,7 @@ import org.w3c.dom.css.Rect;
 public class Rectangle extends Square{
     private double side2;
     private String key;
-    private static double rectNum;
+    private static int rectNum;
     public Rectangle(){
         super();
         side2 = 0;
@@ -32,13 +32,14 @@ public class Rectangle extends Square{
         return side2;
     }
 
-    @Override
-    public double getNum() { return rectNum; }
+    public static int getNum() { return rectNum; }
 
-    @Override
     public String getKey() {
         return key;
     }
+
+    public String getClassName() { return "Rectangle "; }
+
 
     public void remove() {
         if (getClass() == Rectangle.class) {

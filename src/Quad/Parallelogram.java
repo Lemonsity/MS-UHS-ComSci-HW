@@ -3,7 +3,7 @@ package Quad;
 public class Parallelogram extends Rectangle{
     private double height;
     private String key;
-    private static double paraNum;
+    private static int paraNum;
     public Parallelogram(){
         super();
         height = 0;
@@ -31,10 +31,12 @@ public class Parallelogram extends Rectangle{
         return height;
     }
 
-    public double getNum() { return paraNum;}
+    public static int getNum() { return paraNum;}
 
-    @Override
     public String getKey() { return key; }
+
+    public String getClassName() { return "Parallelogram "; }
+
 
     public void remove() {
         if (getClass() == Parallelogram.class) {

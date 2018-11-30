@@ -6,7 +6,7 @@ public class Kite extends Quadrilateral{
     private double diag1;
     private double diag2;
     private String key;
-    private static double kiteNum;
+    private static int kiteNum;
     public Kite(){
         super();
         side1 = 0;
@@ -47,8 +47,9 @@ public class Kite extends Quadrilateral{
         return diag2;
     }
     public String getKey() { return key; }
+    public String getClassName() { return "Kite "; }
 
-    public double getNum() { return kiteNum; }
+    public static int getNum() { return kiteNum; }
 
     public void remove() {
         if (getClass() == Kite.class) {

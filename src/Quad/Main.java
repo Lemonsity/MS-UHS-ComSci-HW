@@ -463,7 +463,7 @@ public class Main {
                                 System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
+                                System.out.printf("There are %d such shape\n", Square.getNum());
                                 break;
                             case 3:
                                 System.out.printf("The area is %d\n", storage.get(index_real).findArea());
@@ -487,7 +487,7 @@ public class Main {
                                 System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
+                                System.out.printf("There are %d such shape\n", Rectangle.getNum());
                                 break;
                             case 3:
                                 System.out.printf("The area is %d\n", storage.get(index_real).findArea());
@@ -514,7 +514,7 @@ public class Main {
                                 System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
+                                System.out.printf("There are %d such shape\n", Rhombus.getNum());
                                 break;
                             case 3:
                                 System.out.printf("The area is %d\n", storage.get(index_real).findArea());
@@ -543,7 +543,7 @@ public class Main {
                                 System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
+                                System.out.printf("There are %d such shape\n", Parallelogram.getNum());
                                 break;
                             case 3:
                                 System.out.printf("The area is %d\n", storage.get(index_real).findArea());
@@ -575,7 +575,7 @@ public class Main {
                                 System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
+                                System.out.printf("There are %d such shape\n", Kite.getNum());
                                 break;
                             case 3:
                                 System.out.printf("The area is %d\n", storage.get(index_real).findArea());
@@ -611,7 +611,7 @@ public class Main {
                                 System.out.printf("There are %d quadrilateral in total\n", storage.get(index_real).getQuadNum());
                                 break;
                             case 2:
-                                System.out.printf("There are %d such shape\n", storage.get(index_real).getNum());
+                                System.out.printf("There are %d such shape\n", Trapezoid.getNum());
                                 break;
                             case 3:
                                 System.out.printf("The area is %d\n", storage.get(index_real).findArea());
