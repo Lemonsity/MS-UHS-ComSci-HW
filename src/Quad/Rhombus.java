@@ -1,8 +1,8 @@
 package Quad;
 
 public class Rhombus extends Square{
-    private int height;
-    private static int rhomNum;
+    private double height;
+    private static double rhomNum;
     private String key;
     public Rhombus(){
         super();
@@ -12,7 +12,7 @@ public class Rhombus extends Square{
             key = "Rhombus " + rhomNum;
         }
     }
-    public Rhombus (int side1, int height) {
+    public Rhombus (double side1, double height) {
         setSide1(side1);
         this.height = height;
         if (getClass() == Rhombus.class) {
@@ -21,13 +21,13 @@ public class Rhombus extends Square{
         }
     }
 
-    public void setHeight(int height){
+    public void setHeight(double height){
         this.height = height;
     }
 
-    public int getHeight() { return height; }
+    public double getHeight() { return height; }
 
-    public int getNum() { return rhomNum; }
+    public double getNum() { return rhomNum; }
 
     @Override
     public String getKey() {
@@ -46,11 +46,11 @@ public class Rhombus extends Square{
         return "<Rhombus> Side 1: " + getSide1() + ", Height: " + getHeight();
     }
     @Override
-    public int findArea(){
+    public double findArea(){
         return getSide1() * getHeight();
     }
     @Override
-    public int findParameter(){
+    public double findParameter(){
         return getSide1() * 4;
     }
     @Override

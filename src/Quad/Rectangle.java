@@ -3,9 +3,9 @@ package Quad;
 import org.w3c.dom.css.Rect;
 
 public class Rectangle extends Square{
-    private int side2;
+    private double side2;
     private String key;
-    private static int rectNum;
+    private static double rectNum;
     public Rectangle(){
         super();
         side2 = 0;
@@ -14,7 +14,7 @@ public class Rectangle extends Square{
             key = "Rectangle " + rectNum;
         }
     }
-    public Rectangle (int side1, int side2) {
+    public Rectangle (double side1, double side2) {
         super();
         setSide1(side1);
         this.side2 = side2;
@@ -24,16 +24,16 @@ public class Rectangle extends Square{
         }
     }
 
-    public void setSide2(int side2) {
+    public void setSide2(double side2) {
         this.side2 = side2;
     }
 
-    public int getSide2() {
+    public double getSide2() {
         return side2;
     }
 
     @Override
-    public int getNum() { return rectNum; }
+    public double getNum() { return rectNum; }
 
     @Override
     public String getKey() {
@@ -51,11 +51,11 @@ public class Rectangle extends Square{
         return "<Rectangle> Side 1: " + getSide1() + ", Side 2: " + getSide2();
     }
     @Override
-    public int findArea(){
+    public double findArea(){
         return side2 * getSide1();
     }
     @Override
-    public int findParameter(){
+    public double findParameter(){
         return (side2 + getSide1()) * 2;
     }
     @Override

@@ -1,12 +1,12 @@
 package Quad;
 
 public class Trapezoid extends Quadrilateral {
-    private int top;
-    private int bot;
-    private int height;
-    private int side1;
-    private int side2;
-    private static int trapNum;
+    private double top;
+    private double bot;
+    private double height;
+    private double side1;
+    private double side2;
+    private static double trapNum;
     private String key;
     public Trapezoid() {
         super();
@@ -17,10 +17,9 @@ public class Trapezoid extends Quadrilateral {
         side2 = 0;
         if (getClass() == Trapezoid.class) {
             trapNum += 1;
-            key = "Trapezoid " + (trapNum);
-        }
+         }
     }
-    public Trapezoid ( int top, int bot, int height, int side1, int side2) {
+    public Trapezoid ( double top, double bot, double height, double side1, double side2) {
         this.side1 = side1;
         this.side2 = side2;
         this.height = height;
@@ -32,20 +31,20 @@ public class Trapezoid extends Quadrilateral {
         }
     }
 
-    public void setTop(int top) { this.top = top; }
-    public void setBot(int bot) { this.bot = bot; }
-    public void setHeight(int height) { this.height = height; }
-    public void setSide1(int side1) { this.side1 = side1; }
-    public void setSide2(int side2) { this.side2 = side2; }
+    public void setTop(double top) { this.top = top; }
+    public void setBot(double bot) { this.bot = bot; }
+    public void setHeight(double height) { this.height = height; }
+    public void setSide1(double side1) { this.side1 = side1; }
+    public void setSide2(double side2) { this.side2 = side2; }
 
-    public int getTop() { return top; }
-    public int getBot() { return bot; }
-    public int getHeight() { return height; }
-    public int getSide1() { return side1; }
-    public int getSide2() { return side2; }
+    public double getTop() { return top; }
+    public double getBot() { return bot; }
+    public double getHeight() { return height; }
+    public double getSide1() { return side1; }
+    public double getSide2() { return side2; }
     public String getKey() { return key; }
 
-    public int getNum() { return trapNum;}
+    public double getNum() { return trapNum;}
 
     public void remove() {
         if (getClass() == Trapezoid.class) {
@@ -59,9 +58,9 @@ public class Trapezoid extends Quadrilateral {
         return "<Trapezoid> Slope 1: " + getSide1() + ", Slope 2: " + getSide2() + ", Height: " + getHeight() + ", Top: " + getTop() + ", Bottom: " + getBot();
     }
     @Override
-    public int findArea() { return (getTop() + getBot()) * getHeight()/ 2; }
+    public double findArea() { return (getTop() + getBot()) * getHeight()/ 2; }
     @Override
-    public int findParameter(){
+    public double findParameter(){
         return getTop() + getBot() + getSide1() + getSide2();
     }
     @Override

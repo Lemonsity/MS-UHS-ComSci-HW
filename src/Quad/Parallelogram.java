@@ -1,9 +1,9 @@
 package Quad;
 
 public class Parallelogram extends Rectangle{
-    private int height;
+    private double height;
     private String key;
-    private static int paraNum;
+    private static double paraNum;
     public Parallelogram(){
         super();
         height = 0;
@@ -12,7 +12,7 @@ public class Parallelogram extends Rectangle{
             key = "Parallelogram " + paraNum;
         }
     }
-    public Parallelogram(int side1, int side2, int height) {
+    public Parallelogram(double side1, double side2, double height) {
         super();
         setSide1(side1);
         setSide2(side2);
@@ -23,15 +23,15 @@ public class Parallelogram extends Rectangle{
         }
     }
 
-    public void setHeight(int height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public int getNum() { return paraNum;}
+    public double getNum() { return paraNum;}
 
     @Override
     public String getKey() { return key; }
@@ -48,11 +48,11 @@ public class Parallelogram extends Rectangle{
         return "<Parallelogram> Side 1: " + getSide1() + ", Side 2: " + getSide2() + ", Height: " + getHeight();
     }
     @Override
-    public int findArea(){
+    public double findArea(){
         return getHeight() * getSide1();
     }
     @Override
-    public int findParameter(){
+    public double findParameter(){
         return (getSide1() + getSide2()) * 2;
     }
     @Override

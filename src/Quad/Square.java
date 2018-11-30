@@ -1,9 +1,9 @@
 package Quad;
 
 public class Square extends Quadrilateral{
-    private int side1;
+    private double side1;
     private String key;
-    private static int squareNum;
+    private static double squareNum;
     public Square(){
         super();
         side1 = 0;
@@ -12,7 +12,7 @@ public class Square extends Quadrilateral{
             key = "Square " + squareNum;
         }
     }
-    public Square (int side1) {
+    public Square (double side1) {
         super();
         this.side1 = side1;
         if (getClass() == Square.class) {
@@ -21,13 +21,13 @@ public class Square extends Quadrilateral{
         }
     }
 
-    public void setSide1(int side1) { this.side1 = side1; }
+    public void setSide1(double side1) { this.side1 = side1; }
 
-    public int getSide1() {
+    public double getSide1() {
         return side1;
     }
 
-    public int getNum() { return squareNum; }
+    public double getNum() { return squareNum; }
 
     @Override
     public String getKey() { return key; }
@@ -41,11 +41,11 @@ public class Square extends Quadrilateral{
     @Override
     public String toString() { return "<Square> Side 1: " + getSide1(); }
     @Override
-    public int findArea() {
+    public double findArea() {
         return getSide1() * getSide1();
     }
     @Override
-    public int findParameter() {
+    public double findParameter() {
         return getSide1() * 4;
     }
     @Override
