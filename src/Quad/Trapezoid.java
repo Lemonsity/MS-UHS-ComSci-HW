@@ -55,8 +55,12 @@ public class Trapezoid extends Quadrilateral {
 
     public boolean equals(Object o){
         if (o.getClass() == Trapezoid.class){
-            Square ob = (Square) o;
-            return this.getSide1() == ob.getSide1();
+            Trapezoid ob = (Trapezoid) o;
+            return this.getSide1() == ob.getSide1()
+                    && this.getSide2() == ob.getSide2()
+                    && this.getHeight() == ob.getHeight()
+                    && this.getTop() == ob.getTop()
+                    && this.getBot() == ob.getBot();
         }
         return false;
     }
