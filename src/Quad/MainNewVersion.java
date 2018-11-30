@@ -408,7 +408,7 @@ public class MainNewVersion {
 
     public static void end() {
         separator();
-        System.out.print("End of program");
+        System.out.print("End of program\nThank you\n");
     }
 
     public static void separator() {
