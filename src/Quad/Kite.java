@@ -46,31 +46,22 @@ public class Kite extends Quadrilateral{
     public double getDiag2() {
         return diag2;
     }
-    public String getKey() { return key; }
-    public String getClassName() { return "Kite "; }
 
-    public static int getNum() { return kiteNum; }
-
-    public void remove() {
-        if (getClass() == Kite.class) {
-            kiteNum -= 1;
-            super.subtractAmount();
-        }
-    }
-
-    @Override
-    public String toString(){
-        return "<Kite> Side 1:" + getSide1() + ", Side 2: " + getSide2() + ", Diagonal 1: " +  getDiag1() + ", Diagonal 2: " + getDiag2();
-    }
-    @Override
+    // Abstract appearance
     public double findArea(){
         return getDiag1() * getDiag2() / 2;
     }
-    @Override
     public double findParameter() {
         return (getSide1() + getSide2()) * 2;
     }
-    @Override
+    public String toString(){ return "<Kite> Side 1:" + getSide1() + ", Side 2: " + getSide2() + ", Diagonal 1: " +  getDiag1() + ", Diagonal 2: " + getDiag2(); }
+
+    // Abstract identification
+    public static int getNum() { return kiteNum; }
+    public String getKey() { return key; }
+    public String getClassName() { return "Kite "; }
+
+    // Manipulate identification
     public boolean equals(Object o){
         if (o.getClass() ==  Kite.class){
             Kite ob = (Kite) o;
@@ -80,6 +71,11 @@ public class Kite extends Quadrilateral{
                     && this.getDiag2() == ob.getDiag2();
         }
         return false;
-
+    }
+    public void remove() {
+        if (getClass() == Kite.class) {
+            kiteNum -= 1;
+            super.subtractAmount();
+        }
     }
 }

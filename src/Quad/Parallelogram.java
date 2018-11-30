@@ -31,33 +31,18 @@ public class Parallelogram extends Rectangle{
         return height;
     }
 
-    public static int getNum() { return paraNum;}
-
-    public String getKey() { return key; }
-
-    public String getClassName() { return "Parallelogram "; }
-
-
-    public void remove() {
-        if (getClass() == Parallelogram.class) {
-            paraNum -= 1;
-            super.subtractAmount();
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "<Parallelogram> Side 1: " + getSide1() + ", Side 2: " + getSide2() + ", Height: " + getHeight();
-    }
-    @Override
     public double findArea(){
         return getHeight() * getSide1();
     }
-    @Override
     public double findParameter(){
         return (getSide1() + getSide2()) * 2;
     }
-    @Override
+    public String toString() { return "<Parallelogram> Side 1: " + getSide1() + ", Side 2: " + getSide2() + ", Height: " + getHeight(); }
+
+    public static int getNum() { return paraNum;}
+    public String getKey() { return key; }
+    public String getClassName() { return "Parallelogram "; }
+
     public boolean equals(Object o){
         if (o.getClass() ==  Parallelogram.class){
             Parallelogram ob = (Parallelogram) o;
@@ -66,5 +51,11 @@ public class Parallelogram extends Rectangle{
                     && this.getHeight() == ob.getHeight();
         }
         return false;
+    }
+    public void remove() {
+        if (getClass() == Parallelogram.class) {
+            paraNum -= 1;
+            super.subtractAmount();
+        }
     }
 }

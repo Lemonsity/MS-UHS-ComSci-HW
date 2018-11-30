@@ -1,7 +1,5 @@
 package Quad;
 
-import org.w3c.dom.css.Rect;
-
 public class Rectangle extends Square{
     private double side2;
     private String key;
@@ -32,34 +30,22 @@ public class Rectangle extends Square{
         return side2;
     }
 
-    public static int getNum() { return rectNum; }
-
-    public String getKey() {
-        return key;
-    }
-
-    public String getClassName() { return "Rectangle "; }
-
-
-    public void remove() {
-        if (getClass() == Rectangle.class) {
-            rectNum -= 1;
-            super.subtractAmount();
-        }
-    }
-    @Override
-    public String toString() {
-        return "<Rectangle> Side 1: " + getSide1() + ", Side 2: " + getSide2();
-    }
-    @Override
     public double findArea(){
         return side2 * getSide1();
     }
-    @Override
     public double findParameter(){
         return (side2 + getSide1()) * 2;
     }
-    @Override
+    public String toString() {
+        return "<Rectangle> Side 1: " + getSide1() + ", Side 2: " + getSide2();
+    }
+
+    public static int getNum() { return rectNum; }
+    public String getKey() {
+        return key;
+    }
+    public String getClassName() { return "Rectangle "; }
+
     public boolean equals(Object o){
         if (o.getClass() ==  Rectangle.class){
             Rectangle ob = (Rectangle) o;
@@ -67,5 +53,11 @@ public class Rectangle extends Square{
                     && this.getSide2() == ob.getSide2();
         }
         return false;
+    }
+    public void remove() {
+        if (getClass() == Rectangle.class) {
+            rectNum -= 1;
+            super.subtractAmount();
+        }
     }
 }

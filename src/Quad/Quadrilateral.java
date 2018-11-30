@@ -16,9 +16,9 @@ public abstract class Quadrilateral {
     public void subtractAmount() { quadNum -= 1;}
     public static int getQuadNum() { return quadNum; }
 
-    abstract void remove(); // When a shape is removed from data base
     abstract double findArea();
     abstract double findParameter();
     abstract String getKey();
     abstract String getClassName();
+    abstract void remove(); // When a shape is removed from data base
 }

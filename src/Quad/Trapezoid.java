@@ -42,33 +42,28 @@ public class Trapezoid extends Quadrilateral {
     public double getHeight() { return height; }
     public double getSide1() { return side1; }
     public double getSide2() { return side2; }
-    public String getKey() { return key; }
-    public String getClassName() { return "Trapezoid "; }
-    public static int getNum() { return trapNum;}
 
-    public void remove() {
-        if (getClass() == Trapezoid.class) {
-            trapNum -= 1;
-            super.subtractAmount();
-        }
-
-    }
-    @Override
-    public String toString() {
-        return "<Trapezoid> Slope 1: " + getSide1() + ", Slope 2: " + getSide2() + ", Height: " + getHeight() + ", Top: " + getTop() + ", Bottom: " + getBot();
-    }
-    @Override
     public double findArea() { return (getTop() + getBot()) * getHeight()/ 2; }
-    @Override
     public double findParameter(){
         return getTop() + getBot() + getSide1() + getSide2();
     }
-    @Override
+    public String toString() { return "<Trapezoid> Slope 1: " + getSide1() + ", Slope 2: " + getSide2() + ", Height: " + getHeight() + ", Top: " + getTop() + ", Bottom: " + getBot(); }
+
+    public static int getNum() { return trapNum;}
+    public String getKey() { return key; }
+    public String getClassName() { return "Trapezoid "; }
+
     public boolean equals(Object o){
         if (o.getClass() == Trapezoid.class){
             Square ob = (Square) o;
             return this.getSide1() == ob.getSide1();
         }
         return false;
+    }
+    public void remove() {
+        if (getClass() == Trapezoid.class) {
+            trapNum -= 1;
+            super.subtractAmount();
+        }
     }
 }
