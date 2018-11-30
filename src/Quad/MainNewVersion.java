@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //This is a class that help me test feature of the Java language and other class specific functions
-public class Test {
+public class MainNewVersion {
 
     public static List<Quadrilateral> database = new ArrayList<>(); // database
 
