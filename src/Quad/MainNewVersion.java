@@ -8,10 +8,9 @@ import java.util.List;
 //This is a class that help me test feature of the Java language and other class specific functions
 public class MainNewVersion {
 
-    public static List<Quadrilateral> database = new ArrayList<>(); // database
+    private static List<Quadrilateral> database = new ArrayList<>(); // database
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int choice; // Choice made in main menu
         int index;
         mainMenu();
@@ -62,7 +61,7 @@ public class MainNewVersion {
         end(); // End of program
     }
 
-    public static void shapeInitial(int shape) throws IOException{
+    private static void shapeInitial(int shape) throws IOException{
         separator();
         System.out.print("You are about to create a ");
         switch (shape) {
@@ -94,7 +93,7 @@ public class MainNewVersion {
         else
             customShape(shape);
     }
-    public static void defaultShape(int shape) {
+    private static void defaultShape(int shape) {
         switch (shape) {
             case 1:
                 database.add(new Square());
@@ -116,7 +115,7 @@ public class MainNewVersion {
                 break;
         }
     }
-    public static void customShape(int shape) throws IOException{
+    private static void customShape(int shape) throws IOException{
         String reenter;
         double side1, side2 = 0, height = 0, diag1 = 0, diag2 = 0, top = 0, bot = 0; // Shape characteristic
         do {
@@ -144,6 +143,7 @@ public class MainNewVersion {
                 bot = Double.parseDouble(input());
             }
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            separator();
             System.out.printf("Side 1: %f, ", side1);
             if (shape == 2 || shape == 4 || shape == 5 || shape == 6) {
                 System.out.printf("Side 2: %f, ", side2);
@@ -186,7 +186,7 @@ public class MainNewVersion {
         }
     }
 
-    public static int searchByIndex() throws IOException{
+    private static int searchByIndex() throws IOException{
         separator();
         for (int i = 0; i < database.size(); i++)
             System.out.print((i + 1) + " " + database.get(i).getClassName() + "\n");
@@ -194,7 +194,7 @@ public class MainNewVersion {
         System.out.print("Please enter the index of the shape\n");
         return Integer.parseInt(input()) - 1;
     }
-    public static int searchByKey() throws IOException{
+    private static int searchByKey() throws IOException{
         int index = -1;
         String key;
         separator();
@@ -209,12 +209,11 @@ public class MainNewVersion {
         return index;
     }
 
-    public static void chooseActionToShape(int index) throws IOException{
+    private static void chooseActionToShape(int index) throws IOException{
         int choice;
         separator();
         if (index < 0 || index >= database.size()){
             System.out.print("No such shape is found\n");
-            return;
         }
         else {
             System.out.print("What would you to do with this shape?\n" +
@@ -243,7 +242,7 @@ public class MainNewVersion {
         }
     }
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    public static void manipulateHub(int index) throws IOException{
+    private static void manipulateHub(int index) throws IOException{
         int input;
         int newValue;
         separator();
@@ -298,7 +297,7 @@ public class MainNewVersion {
                 break;
         }
     }
-    public static void manipulateSide1(int index, int input) {
+    private static void manipulateSide1(int index, int input) {
         if (database.get(index).getClass() == Square.class)
             ((Square)database.get(index)).setSide1(input);
         if (database.get(index).getClass() == Rectangle.class)
@@ -312,7 +311,7 @@ public class MainNewVersion {
         if (database.get(index).getClass() == Trapezoid.class)
             ((Trapezoid)database.get(index)).setSide1(input);
     }
-    public static void manipulateSide2(int index, int input) {
+    private static void manipulateSide2(int index, int input) {
         if (database.get(index).getClass() == Rectangle.class)
             ((Rectangle)database.get(index)).setSide2(input);
         if (database.get(index).getClass() == Parallelogram.class)
@@ -322,7 +321,7 @@ public class MainNewVersion {
         if (database.get(index).getClass() == Trapezoid.class)
             ((Trapezoid)database.get(index)).setSide2(input);
     }
-    public static void manipulateHeight(int index, int input) {
+    private static void manipulateHeight(int index, int input) {
         if (database.get(index).getClass() == Rhombus.class)
             ((Rhombus)database.get(index)).setHeight(input);
         if (database.get(index).getClass() == Parallelogram.class)
@@ -330,25 +329,25 @@ public class MainNewVersion {
         if (database.get(index).getClass() == Trapezoid.class)
             ((Trapezoid)database.get(index)).setHeight(input);
     }
-    public static void manipulateDiag1(int index, int input) {
+    private static void manipulateDiag1(int index, int input) {
         ((Kite)database.get(index)).setDiag1(input);
 
     }
-    public static void manipulateDiag2(int index, int input) {
+    private static void manipulateDiag2(int index, int input) {
         ((Kite)database.get(index)).setDiag2(input);
 
     }
-    public static void manipulateTop(int index, int input) {
+    private static void manipulateTop(int index, int input) {
         ((Trapezoid)database.get(index)).setTop(input);
 
 
     }
-    public static void manipulateBot(int index, int input) {
+    private static void manipulateBot(int index, int input) {
         ((Trapezoid)database.get(index)).setBot(input);
 
     }
 
-    public static void removeShape(int index) throws IOException{
+    private static void removeShape(int index) throws IOException{
         String input;
         separator();
         if (index < 0 || index >= database.size()){
@@ -365,7 +364,7 @@ public class MainNewVersion {
         }
     }
 
-    public static void list() {
+    private static void list() {
         separator();
         for (int i = 0; i < database.size(); i++)
             System.out.print((i + 1) + " " + database.get(i).getClassName() + "\n");
@@ -378,7 +377,7 @@ public class MainNewVersion {
         System.out.print("# of Trapezoid: " + Trapezoid.getNum() + "\n");
     }
 
-    public static void mainMenu() {
+    private static void mainMenu() {
         separator();
         System.out.print("Please choose one of the option below\n" +
                 "1. Add a shape\n" +
@@ -388,7 +387,7 @@ public class MainNewVersion {
                 "5. Exit program\n");
     }
 
-    public static void shapeMenu() {
+    private static void shapeMenu() {
         separator();
         System.out.print("Please choose one of the shape\n" +
                 "1. Square\n" +
@@ -399,23 +398,23 @@ public class MainNewVersion {
                 "6. Trapezoid\n");
     }
 
-    public static void indexKeyMenu() {
+    private static void indexKeyMenu() {
         separator();
         System.out.print("Would you like to search by index or key?\n");
         System.out.print("1. Index\n");
         System.out.print("2. Key\n");
     }
 
-    public static void end() {
+    private static void end() {
         separator();
         System.out.print("End of program\nThank you\n");
     }
 
-    public static void separator() {
+    private static void separator() {
         System.out.print("-----------------------------------------------------------------\n");
     }
 
-    public static String input() throws IOException{
+    private static String input() throws IOException{
         BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
         return br.readLine();
     }
