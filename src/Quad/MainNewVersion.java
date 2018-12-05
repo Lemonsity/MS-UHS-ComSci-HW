@@ -241,7 +241,7 @@ public class MainNewVersion {
             }
         }
     }
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    //Below are the methods used for manipulating each specific characteristic of the shape
     private static void manipulateHub(int index) throws IOException{
         int input;
         int newValue;
@@ -367,7 +367,7 @@ public class MainNewVersion {
     private static void list() {
         separator();
         for (int i = 0; i < database.size(); i++)
-            System.out.print((i + 1) + " " + database.get(i).getClassName() + "\n");
+            System.out.print((i + 1) + ". " + database.get(i).getClassName() + "\n");
         System.out.print("# of Quadrilateral: " + Quadrilateral.getQuadNum() + "\n");
         System.out.print("# of Square: " + Square.getNum() + "\n");
         System.out.print("# of Rectangle: " + Rectangle.getNum() + "\n");
@@ -376,6 +376,8 @@ public class MainNewVersion {
         System.out.print("# of Kite: " + Kite.getNum() + "\n");
         System.out.print("# of Trapezoid: " + Trapezoid.getNum() + "\n");
     }
+
+    // Below are outputs methods for menu and other info
 
     private static void mainMenu() {
         separator();
@@ -413,6 +415,8 @@ public class MainNewVersion {
     private static void separator() {
         System.out.print("-----------------------------------------------------------------\n");
     }
+
+    // Below is the input method
 
     private static String input() throws IOException{
         BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
