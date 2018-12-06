@@ -207,7 +207,7 @@ public class MainNewVersion {
         }
         return index;
     }
-    private static int searchByCharacteristic() throws IOException{
+    private static int searchByCharacteristic() throws IOException {
         int index = -1;
         shapeMenu();
         Quadrilateral check = customShape(Integer.parseInt(input()));
