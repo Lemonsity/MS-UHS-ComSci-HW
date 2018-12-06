@@ -47,7 +47,7 @@ public class Trapezoid extends Quadrilateral {
     public double findParameter(){
         return getTop() + getBot() + getSide1() + getSide2();
     }
-    public String toString() { return "<Trapezoid> Slope 1: " + getSide1() + ", Slope 2: " + getSide2() + ", Height: " + getHeight() + ", Top: " + getTop() + ", Bottom: " + getBot(); }
+    public String toString() { return "<Trapezoid> Slope 1: " + getSide1() + ", Slope 2: " + getSide2() + ", Height: " + getHeight() + ", Top: " + getTop() + ", Bottom: " + getBot() + ", Key: " + getKey(); }
 
     public static int getNum() { return trapNum;}
     public String getKey() { return key; }

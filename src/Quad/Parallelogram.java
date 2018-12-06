@@ -37,7 +37,7 @@ public class Parallelogram extends Rectangle{
     public double findParameter(){
         return (getSide1() + getSide2()) * 2;
     }
-    public String toString() { return "<Parallelogram> Side 1: " + getSide1() + ", Side 2: " + getSide2() + ", Height: " + getHeight(); }
+    public String toString() { return "<Parallelogram> Side 1: " + getSide1() + ", Side 2: " + getSide2() + ", Height: " + getHeight() + ", Key: " + getKey(); }
 
     public static int getNum() { return paraNum;}
     public String getKey() { return key; }

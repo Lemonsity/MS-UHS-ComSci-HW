@@ -54,7 +54,7 @@ public class Kite extends Quadrilateral{
     public double findParameter() {
         return (getSide1() + getSide2()) * 2;
     }
-    public String toString(){ return "<Kite> Side 1:" + getSide1() + ", Side 2: " + getSide2() + ", Diagonal 1: " +  getDiag1() + ", Diagonal 2: " + getDiag2(); }
+    public String toString(){ return "<Kite> Side 1:" + getSide1() + ", Side 2: " + getSide2() + ", Diagonal 1: " +  getDiag1() + ", Diagonal 2: " + getDiag2() + ", Key: " + getKey(); }
 
     // Abstract identification
     public static int getNum() { return kiteNum; }

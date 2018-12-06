@@ -35,7 +35,7 @@ public class Rhombus extends Square{
         return getSide1() * 4;
     }
     public String toString() {
-        return "<Rhombus> Side 1: " + getSide1() + ", Height: " + getHeight();
+        return "<Rhombus> Side 1: " + getSide1() + ", Height: " + getHeight() + ", Key: " + getKey();
     }
 
     public static int getNum() { return rhomNum; }

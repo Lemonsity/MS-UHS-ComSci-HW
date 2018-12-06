@@ -37,7 +37,7 @@ public class Rectangle extends Square{
         return (side2 + getSide1()) * 2;
     }
     public String toString() {
-        return "<Rectangle> Side 1: " + getSide1() + ", Side 2: " + getSide2();
+        return "<Rectangle> Side 1: " + getSide1() + ", Side 2: " + getSide2() + ", Key: " + getKey();
     }
 
     public static int getNum() { return rectNum; }

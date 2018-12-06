@@ -33,7 +33,7 @@ public class Square extends Quadrilateral{
     public double findParameter() {
         return getSide1() * 4;
     }
-    public String toString() { return "<Square> Side 1: " + getSide1(); }
+    public String toString() { return "<Square> Side 1: " + getSide1() + ", Key: " + getKey(); }
 
     public static int getNum() { return squareNum; }
     public String getKey() { return key; }

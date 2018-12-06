@@ -87,11 +87,12 @@ public class MainNewVersion {
         System.out.print("Would you like to create a default of such shape or custom one?\n");
         System.out.print("1. Default\n");
         System.out.print("2. Custom\n");
-        int choiceDC = Integer.parseInt(input());
+        int choiceDC = Integer.parseInt(input()); // DC stands for Default / Custom, the choice user made
         if (choiceDC == 1)
             defaultShape(shape);
         else
             customShape(shape);
+        System.out.print(database.get(database.size() - 1).toString() + "\n");
     }
     private static void defaultShape(int shape) {
         switch (shape) {
