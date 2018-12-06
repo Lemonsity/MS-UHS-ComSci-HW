@@ -18,38 +18,48 @@ public class MainNewVersion {
         while (choice != 5) { // if user doesn't choose to end program (5)
             switch (choice) {
                 case 1:
-                    if (database.size() < 20) {
+                    if (checkFull()) {
                         shapeMenu();
                         shapeInitial(Integer.parseInt(input()));
                     }
-                    else
+                    else {
+                        separator();
                         System.out.print("Not enough storage\n");
+                    }
                     break;
                 case 2:
-                    if (database.size() != 0) {
-                        indexKeyMenu();
+                    if (!checkEmpty()) {
+                        indexKeyCharacteristicMenu();
                         choice = Integer.parseInt(input());
                         if (choice == 1)
                             index = searchByIndex();
-                        else
+                        else if (choice == 2)
                             index = searchByKey();
+                        else
+                            index = searchByCharacteristic();
                         removeShape(index);
                     }
-                    else
+                    else {
+                        separator();
                         System.out.print("There is no shape to remove\n");
+                    }
                     break;
                 case 3:
-                    if (database.size() != 0) {
-                        indexKeyMenu();
+                    if (!checkEmpty()) {
+                        indexKeyCharacteristicMenu();
                         choice = Integer.parseInt(input());
                         if (choice == 1)
                             index = searchByIndex();
-                        else
+                        else if (choice == 2)
                             index = searchByKey();
+                        else
+                            index = searchByCharacteristic();
                         chooseActionToShape(index);
                     }
-                    else
+                    else {
+                        separator();
                         System.out.print("There is no shape to choose from\n");
+                    }
                     break;
                 case 4:
                     list();
@@ -89,34 +99,28 @@ public class MainNewVersion {
         System.out.print("2. Custom\n");
         int choiceDC = Integer.parseInt(input()); // DC stands for Default / Custom, the choice user made
         if (choiceDC == 1)
-            defaultShape(shape);
+            database.add(defaultShape(shape));
         else
-            customShape(shape);
+            database.add(customShape(shape));
         System.out.print(database.get(database.size() - 1).toString() + "\n");
     }
-    private static void defaultShape(int shape) {
+    private static Quadrilateral defaultShape(int shape) {
         switch (shape) {
             case 1:
-                database.add(new Square());
-                break;
+                return new Square();
             case 2:
-                database.add(new Rectangle());
-                break;
+                return new Rectangle();
             case 3:
-                database.add(new Rhombus());
-                break;
+                return new Rhombus();
             case 4:
-                database.add(new Parallelogram());
-                break;
+                return new Parallelogram();
             case 5:
-                database.add(new Kite());
-                break;
-            case 6:
-                database.add(new Trapezoid());
-                break;
+                return new Kite();
+            default:
+                return new Trapezoid();
         }
     }
-    private static void customShape(int shape) throws IOException{
+    private static Quadrilateral customShape(int shape) throws IOException{
         String reenter;
         double side1, side2 = 0, height = 0, diag1 = 0, diag2 = 0, top = 0, bot = 0; // Shape characteristic
         do {
@@ -167,23 +171,17 @@ public class MainNewVersion {
         } while (!reenter.equalsIgnoreCase("Y"));
         switch (shape) {
             case 1:
-                database.add(new Square(side1));
-                break;
+                return new Square(side1);
             case 2:
-                database.add(new Rectangle(side1, side2));
-                break;
+                return new Rectangle(side1, side2);
             case 3:
-                database.add(new Rhombus(side1, height));
-                break;
+                return new Rhombus(side1, height);
             case 4:
-                database.add(new Parallelogram(side1, side2, height));
-                break;
+                return new Parallelogram(side1, side2, height);
             case 5:
-                database.add(new Kite(side1, side2, diag1, diag2));
-                break;
-            case 6:
-                database.add(new Trapezoid(top, bot, height, side1, side2));
-                break;
+                return new Kite(side1, side2, diag1, diag2);
+            default:
+                return new Trapezoid(top, bot, height, side1, side2);
         }
     }
 
@@ -209,11 +207,41 @@ public class MainNewVersion {
         }
         return index;
     }
+    private static int searchByCharacteristic() throws IOException{
+        int index = -1;
+        shapeMenu();
+        Quadrilateral check = customShape(Integer.parseInt(input()));
+        for (int i = 0; i < database.size(); i++) {
+            if (database.get(i).equals(check)) {
+                index = i;
+                check.remove();
+                break;
+            }
+        }
+        return index;
+    }
+
+    private static void removeShape(int index) throws IOException{
+        String input;
+        separator();
+        if (!checkIndexValid(index)){
+            System.out.print("No such shape is found\n");
+            return;
+        }
+        System.out.print(database.get(index).toString() + "\n");
+        System.out.print("Enter Y if you want to remove the shape\n");
+        System.out.print("Enter anything else if you you changed your mind\n");
+        input = input();
+        if (input.equalsIgnoreCase("Y")){
+            database.get(index).remove();
+            database.remove(index);
+        }
+    }
 
     private static void chooseActionToShape(int index) throws IOException{
         int choice;
         separator();
-        if (index < 0 || index >= database.size()){
+        if (!checkIndexValid(index)){
             System.out.print("No such shape is found\n");
         }
         else {
@@ -242,7 +270,7 @@ public class MainNewVersion {
             }
         }
     }
-    //Below are the methods used for manipulating each specific characteristic of the shape
+    //Hub to choose which characteristic to manipulate
     private static void manipulateHub(int index) throws IOException{
         int input;
         int newValue;
@@ -298,6 +326,7 @@ public class MainNewVersion {
                 break;
         }
     }
+    //Below are the methods used for manipulating each specific characteristic of the shape
     private static void manipulateSide1(int index, int input) {
         if (database.get(index).getClass() == Square.class)
             ((Square)database.get(index)).setSide1(input);
@@ -348,23 +377,6 @@ public class MainNewVersion {
 
     }
 
-    private static void removeShape(int index) throws IOException{
-        String input;
-        separator();
-        if (index < 0 || index >= database.size()){
-            System.out.print("No such shape is found\n");
-            return;
-        }
-        System.out.print(database.get(index).toString() + "\n");
-        System.out.print("\nEnter Y if you want to remove the shape\n");
-        System.out.print("Enter anything else if you you changed your mind\n");
-        input = input();
-        if (input.equalsIgnoreCase("Y")){
-            database.get(index).remove();
-            database.remove(index);
-        }
-    }
-
     private static void list() {
         separator();
         for (int i = 0; i < database.size(); i++)
@@ -376,6 +388,21 @@ public class MainNewVersion {
         System.out.print("# of Parallelogram: " + Parallelogram.getNum() + "\n");
         System.out.print("# of Kite: " + Kite.getNum() + "\n");
         System.out.print("# of Trapezoid: " + Trapezoid.getNum() + "\n");
+    }
+
+    // Check if the database is full / empty
+    private static boolean checkFull() {
+        return database.size() < 20;
+
+    }
+    private static boolean checkEmpty() {
+        return database.size() == 0;
+
+    }
+    // Check if index returned is valid
+    private static boolean checkIndexValid(int index) {
+        return index >= 0 && index <= 20;
+
     }
 
     // Below are outputs methods for menu and other info
@@ -401,11 +428,12 @@ public class MainNewVersion {
                 "6. Trapezoid\n");
     }
 
-    private static void indexKeyMenu() {
+    private static void indexKeyCharacteristicMenu() {
         separator();
         System.out.print("Would you like to search by index or key?\n");
         System.out.print("1. Index\n");
         System.out.print("2. Key\n");
+        System.out.print("3. Characteristic (Return the first appeareance)\n");
     }
 
     private static void end() {
