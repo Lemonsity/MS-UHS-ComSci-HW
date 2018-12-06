@@ -214,10 +214,10 @@ public class MainNewVersion {
         for (int i = 0; i < database.size(); i++) {
             if (database.get(i).equals(check)) {
                 index = i;
-                check.remove();
                 break;
             }
         }
+        check.remove();
         return index;
     }
 
