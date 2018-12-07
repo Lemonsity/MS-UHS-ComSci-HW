@@ -1,15 +1,30 @@
 package Quad;
 
+import java.util.ArrayList;
+
 public class Parallelogram extends Rectangle{
     private double height;
     private String key;
+    private static ArrayList<Boolean> numUsed = new ArrayList<>();
     private static int paraNum;
     public Parallelogram(){
         super();
         height = 0;
         if (getClass() == Parallelogram.class) {
             paraNum += 1;
-            key = "Parallelogram " + paraNum;
+            boolean emptySpot = false;
+            for (int i = 0; i < numUsed.size(); i++) {
+                if (numUsed.get(i) == false) {
+                    key = "Parallelogram " + (i + 1);
+                    numUsed.set(i, true);
+                    emptySpot = true;
+                    break;
+                }
+            }
+            if (!emptySpot) {
+                key = "Parallelogram " + paraNum;
+                numUsed.add(true);
+            }
         }
     }
     public Parallelogram(double side1, double side2, double height) {
@@ -56,6 +71,11 @@ public class Parallelogram extends Rectangle{
         if (getClass() == Parallelogram.class) {
             paraNum -= 1;
             super.subtractAmount();
+            String[] keyNum = getKey().split(" ");
+            if (Integer.parseInt(keyNum[1]) == numUsed.size())
+                numUsed.remove(numUsed.size() - 1);
+            else
+                numUsed.set(Integer.parseInt(keyNum[1]) - 1, false);
         }
     }
 }

@@ -1,15 +1,30 @@
 package Quad;
 
+import java.util.ArrayList;
+
 public class Square extends Quadrilateral{
     private double side1;
     private String key;
+    private static ArrayList<Boolean> numUsed = new ArrayList<>();
     private static int squareNum;
     public Square(){
         super();
         side1 = 0;
         if (getClass() == Square.class) {
             squareNum += 1;
-            key = "Square " + squareNum;
+            boolean emptySpot = false;
+            for (int i = 0; i < numUsed.size(); i++) {
+                if (numUsed.get(i) == false) {
+                    key = "Square " + (i + 1);
+                    numUsed.set(i, true);
+                    emptySpot = true;
+                    break;
+                }
+            }
+            if (!emptySpot) {
+                key = "Square " + squareNum;
+                numUsed.add(true);
+            }
         }
     }
     public Square (double side1) {
@@ -50,6 +65,11 @@ public class Square extends Quadrilateral{
         if (getClass() == Square.class) {
             squareNum -= 1;
             super.subtractAmount();
+            String[] keyNum = getKey().split(" ");
+            if (Integer.parseInt(keyNum[1]) == numUsed.size())
+                numUsed.remove(numUsed.size() - 1);
+            else
+                numUsed.set(Integer.parseInt(keyNum[1]) - 1, false);
         }
     }
 }

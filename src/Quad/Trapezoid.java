@@ -1,13 +1,16 @@
 package Quad;
 
+import java.util.ArrayList;
+
 public class Trapezoid extends Quadrilateral {
     private double top;
     private double bot;
     private double height;
     private double side1;
     private double side2;
-    private static int trapNum;
     private String key;
+    private static ArrayList<Boolean> numUsed = new ArrayList<>();
+    private static int trapNum;
     public Trapezoid() {
         super();
         top = 0;
@@ -17,7 +20,20 @@ public class Trapezoid extends Quadrilateral {
         side2 = 0;
         if (getClass() == Trapezoid.class) {
             trapNum += 1;
-         }
+            boolean emptySpot = false;
+            for (int i = 0; i < numUsed.size(); i++) {
+                if (numUsed.get(i) == false) {
+                    key = "Trapezoid " + (i + 1);
+                    numUsed.set(i, true);
+                    emptySpot = true;
+                    break;
+                }
+            }
+            if (!emptySpot) {
+                key = "Trapezoid " + trapNum;
+                numUsed.add(true);
+            }
+        }
     }
     public Trapezoid ( double top, double bot, double height, double side1, double side2) {
         this.side1 = side1;
@@ -68,6 +84,11 @@ public class Trapezoid extends Quadrilateral {
         if (getClass() == Trapezoid.class) {
             trapNum -= 1;
             super.subtractAmount();
+            String[] keyNum = getKey().split(" ");
+            if (Integer.parseInt(keyNum[1]) == numUsed.size())
+                numUsed.remove(numUsed.size() - 1);
+            else
+                numUsed.set(Integer.parseInt(keyNum[1]) - 1, false);
         }
     }
 }

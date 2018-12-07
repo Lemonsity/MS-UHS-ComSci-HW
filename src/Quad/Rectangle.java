@@ -1,15 +1,30 @@
 package Quad;
 
+import java.util.ArrayList;
+
 public class Rectangle extends Square{
     private double side2;
     private String key;
+    private static ArrayList<Boolean> numUsed = new ArrayList<>();
     private static int rectNum;
     public Rectangle(){
         super();
         side2 = 0;
         if (this.getClass() == Rectangle.class) {
             rectNum += 1;
-            key = "Rectangle " + rectNum;
+            boolean emptySpot = false;
+            for (int i = 0; i < numUsed.size(); i++) {
+                if (numUsed.get(i) == false) {
+                    key = "Rectangle " + (i + 1);
+                    numUsed.set(i, true);
+                    emptySpot = true;
+                    break;
+                }
+            }
+            if (!emptySpot) {
+                key = "Rectangle " + rectNum;
+                numUsed.add(true);
+            }
         }
     }
     public Rectangle (double side1, double side2) {
@@ -58,6 +73,11 @@ public class Rectangle extends Square{
         if (getClass() == Rectangle.class) {
             rectNum -= 1;
             super.subtractAmount();
+            String[] keyNum = getKey().split(" ");
+            if (Integer.parseInt(keyNum[1]) == numUsed.size())
+                numUsed.remove(numUsed.size() - 1);
+            else
+                numUsed.set(Integer.parseInt(keyNum[1]) - 1, false);
         }
     }
 }

@@ -1,11 +1,14 @@
 package Quad;
 
+import java.util.ArrayList;
+
 public class Kite extends Quadrilateral{
     private double side1;
     private double side2;
     private double diag1;
     private double diag2;
     private String key;
+    private static ArrayList<Boolean> numUsed = new ArrayList<>();
     private static int kiteNum;
     public Kite(){
         super();
@@ -15,7 +18,19 @@ public class Kite extends Quadrilateral{
         diag2 = 0;
         if (getClass() == Kite.class) {
             kiteNum += 1;
-            key = "Kite " + kiteNum;
+            boolean emptySpot = false;
+            for (int i = 0; i < numUsed.size(); i++) {
+                if (numUsed.get(i) == false) {
+                    key = "Kite " + (i + 1);
+                    numUsed.set(i, true);
+                    emptySpot = true;
+                    break;
+                }
+            }
+            if (!emptySpot) {
+                key = "Kite " + kiteNum;
+                numUsed.add(true);
+            }
         }
     }
     public Kite(double side1, double side2, double diag1, double diag2){
@@ -76,6 +91,11 @@ public class Kite extends Quadrilateral{
         if (getClass() == Kite.class) {
             kiteNum -= 1;
             super.subtractAmount();
+            String[] keyNum = getKey().split(" ");
+            if (Integer.parseInt(keyNum[1]) == numUsed.size())
+                numUsed.remove(numUsed.size() - 1);
+            else
+                numUsed.set(Integer.parseInt(keyNum[1]) - 1, false);
         }
     }
 }

@@ -367,7 +367,7 @@ public class MainNewVersion {
         ((Kite)database.get(index)).setDiag2(input);
 
     }
-    private static void manipulateTop(int index, int input) {
+    private static  void manipulateTop(int index, int input) {
         ((Trapezoid)database.get(index)).setTop(input);
 
 
