@@ -1,4 +1,8 @@
 #Functions
+Which program to evaluate:
+
+    MainNewVersion.java is the official version that I would liek to be evaluated on
+    Main.java is the older version of the code
 
 Requirement and how to examine:
 
@@ -28,3 +32,4 @@ Requirement and how to examine:
         
     List all the objects in the database
         - Displayed when the user choose 4 in main menu
+        
