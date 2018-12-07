@@ -1,4 +1,5 @@
 package Quad;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -401,7 +402,7 @@ public class MainNewVersion {
     }
     // Check if index returned is valid
     private static boolean checkIndexValid(int index) {
-        return index >= 0 && index <= 20;
+        return index >= 0 && index < 20;
 
     }
 
