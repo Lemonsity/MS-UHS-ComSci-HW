@@ -1,10 +1,10 @@
-#MS' UHS school work solution
+# MS' UHS school work solution
 
 This is MS' solution to some UHS school work.
 
 I use GitHub as a cloud drive, but you can use it as a reference.
 
-##Some Tips
+## Some Tips
 
 Listen in class.
 
