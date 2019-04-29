@@ -1,7 +1,5 @@
 package Quad;
 
-import org.w3c.dom.css.Rect;
-
 import java.io.*;
 import java.util.ArrayList;
 
